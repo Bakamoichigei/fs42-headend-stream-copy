@@ -24,9 +24,7 @@ import sys
 import time
 
 from fs42.prevue import protocol as P
-from fs42.prevue import listings as L
-from fs42.station_io import StationIO
-from fs42.station_manager import StationManager
+# FS42 itself is imported lazily, so --demo works on a machine without an FS42 install
 
 logging.basicConfig(format="%(asctime)s %(levelname)s:%(name)s:%(message)s", level=logging.INFO)
 log = logging.getLogger("PrevueFeed")
@@ -52,7 +50,10 @@ DEFAULTS = {
 }
 
 
-def load_conf():
+def load_conf(demo=False):
+    if demo:
+        return dict(DEFAULTS)
+    from fs42.station_io import StationIO
     raw = StationIO().load_main_config() or {}
     conf = dict(DEFAULTS)
     conf.update(raw.get("prevue", {}))
@@ -152,7 +153,46 @@ def ad_commands(conf):
     return out
 
 
+DEMO_LINEUP = [
+    # (channel, call letters, flags, [(minutes long, title, is_movie), ...] repeating from 5 AM)
+    ("2", "PREVUE", 0, [(30, "Prevue Guide", False)]),
+    ("3", "WFSA", 0, [(30, "Action News", False), (30, "Wheel of Fortune", False), (60, "Murder, She Wrote", False)]),
+    ("4", "KMOV", 0, [(120, "Back to the Future", True), (120, "The Goonies", True)]),
+    ("5", "LOOP5", 0, [(30, "Cartoon Express", False)]),
+    ("6", "WPVI", 0x02, [(60, "Local Programming", False)]),
+]
+
+
+def demo_listings(now):
+    """A made-up lineup, for testing against the real software without FS42."""
+    day0 = P.listings_day_start(now)
+    chans, progs = [], {}
+    for num, call, flags, shows in DEMO_LINEUP:
+        chans.append({"source_id": call[:6], "number": num, "call_letters": call, "flags": P.CH_NONE | flags})
+        for d in range(2):
+            start = day0 + datetime.timedelta(days=d)
+            jd = P.julian_day(start)
+            t, i = start, 0
+            while t < start + datetime.timedelta(days=1):
+                mins, title_, movie = shows[i % len(shows)]
+                progs.setdefault(jd, []).append((P.timeslot(t), call[:6], title_, P.PG_MOVIE if movie else P.PG_NONE))
+                t += datetime.timedelta(minutes=mins)
+                i += 1
+    return P.julian_day(now), chans, progs
+
+
 def listings_commands(conf, now):
+    if conf.get("_demo"):
+        jd, chans, progs = demo_listings(now)
+        out = [P.channels(jd, chans)]
+        n = 0
+        for day in sorted(progs, key=lambda d: (d - jd) % 256):
+            for slot, sid, title_, flags in progs[day]:
+                out.append(P.program(day, slot, sid, title_, flags))
+                n += 1
+        return out, chans, progs, n
+    from fs42.prevue import listings as L
+    from fs42.station_manager import StationManager
     stations = StationManager().stations
     jd, chans, progs = L.build(stations, conf.get("channels", {}), now,
                                exclude=set(int(x) for x in conf.get("exclude", [])),
@@ -204,9 +244,17 @@ def main():
     ap.add_argument("--once", action="store_true", help="send once and exit")
     ap.add_argument("--dump", metavar="FILE", help="write the byte stream to FILE instead of the emulator")
     ap.add_argument("--print", action="store_true", help="print the lineup and listings, send nothing")
+    ap.add_argument("--demo", action="store_true", help="send a built-in test lineup instead of FS42's schedules")
+    ap.add_argument("--format", choices=["grid", "scroll"], help="override display_format")
+    ap.add_argument("--software", choices=["9", "7.8.3"], help="override software version")
     args = ap.parse_args()
 
-    conf = load_conf()
+    conf = load_conf(args.demo)
+    conf["_demo"] = args.demo
+    if args.format:
+        conf["display_format"] = args.format
+    if args.software:
+        conf["software"] = args.software
     if args.host:
         conf["host"] = args.host
     if args.port:
