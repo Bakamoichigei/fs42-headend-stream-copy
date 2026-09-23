@@ -22,6 +22,9 @@ FS42 schedules ─► prevue_feed.py ─TCP─► prevue_serial_bridge.py ─pty
 | `tools/prevue/prevue-winuae.uae` | The WinUAE configuration verified to run Prevue 9.0.4. | **Working** |
 | `tools/prevue/prevue.fs-uae` | FS-UAE settings mirroring that WinUAE setup. | **Not yet tested** |
 
+For rebranding (logos, promo cards, banner) and keyboard commands, see
+[prevue-customizing.md](prevue-customizing.md).
+
 ## What you need to supply
 
 1. **Kickstart ROMs from Cloanto's *Amiga Forever*.** They're still under copyright, so that's the
