@@ -49,6 +49,7 @@ DEFAULTS = {
     "channels": {},                   # per-channel overrides: {"3": {"url": "udp://239.1.1.1:1234"}}
     "exclude": [],                    # channel numbers to leave off the headend
     "path_rewrite": [],               # [{"from": "/media/src/", "to": "/media/ts/", "ext": ".ts"}]
+    "live_channels": {},              # {"2": {"name": "PREVUE", "command": "tools/prevue/prevue_channel.sh", "env": {}}}
 }
 
 
@@ -75,6 +76,60 @@ def channel_url(station, conf):
     return f"{scheme}://{group}:{port}?{'&'.join(q)}"
 
 
+def ffmpeg_url(num, conf):
+    """The same multicast destination as channel_url(), in ffmpeg's udp:// syntax."""
+    override = conf["channels"].get(str(num), {})
+    group = override.get("group") or str(ipaddress.IPv4Address(conf["multicast_base"]) + num)
+    port = override.get("port", conf["port"])
+    q = f"pkt_size=1316&ttl={conf['ttl']}"
+    if conf.get("interface"):
+        q += f"&localaddr={conf['interface']}"
+    return f"udp://{group}:{port}?{q}"
+
+
+class LiveChannel:
+    """A channel produced by an external live encoder (e.g. the emulated Prevue Guide).
+
+    Quacks like multiprocessing.Process so the supervisor can treat it the same way.
+    """
+
+    def __init__(self, num, lconf, url):
+        self.num, self.lconf, self.url = num, lconf, url
+        self.name = lconf.get("name", f"LIVE{num}")
+        self.proc = None
+
+    def start(self):
+        env = dict(os.environ)
+        env.update({k: str(v) for k, v in self.lconf.get("env", {}).items()})
+        env["URL"] = self.url
+        env["CHANNEL_NUMBER"] = str(self.num)
+        env["CHANNEL_NAME"] = self.name
+        self.proc = subprocess.Popen(self.lconf["command"], shell=True, env=env, start_new_session=True)
+        return self
+
+    def is_alive(self):
+        return self.proc is not None and self.proc.poll() is None
+
+    @property
+    def exitcode(self):
+        return None if self.proc is None else self.proc.poll()
+
+    def join(self, timeout=None):
+        if self.proc is None:
+            return
+        try:
+            self.proc.wait(timeout)
+        except subprocess.TimeoutExpired:
+            pass
+
+    def terminate(self):
+        if self.is_alive():
+            try:
+                os.killpg(self.proc.pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+
+
 def select_stations(args, conf):
     sm = StationManager()
     wanted = None
@@ -87,6 +142,8 @@ def select_stations(args, conf):
             continue
         if num in conf["exclude"]:
             continue
+        if str(num) in conf.get("live_channels", {}):
+            continue                      # a live encoder owns this channel number
         if not st.get("_has_schedule"):
             log.warning(f"ch {num} '{st['network_name']}' is a {st['network_type']} channel - "
                         "not supported in stream-copy mode, skipping")
@@ -196,7 +253,9 @@ def main():
 
     conf = load_conf()
     stations = select_stations(args, conf)
-    if not stations:
+    live = {int(n): lc for n, lc in conf.get("live_channels", {}).items()
+            if not args.channels or int(n) in {int(c) for c in args.channels.split(",")}}
+    if not stations and not live:
         log.error("no schedulable channels found - check confs/ and run station_42.py to build schedules")
         return 1
 
@@ -209,10 +268,20 @@ def main():
         else:
             urls[num] = channel_url(st, conf)
 
+    live_urls = {}
+    for num in live:
+        if args.record:
+            os.makedirs(args.record, exist_ok=True)
+            live_urls[num] = os.path.abspath(os.path.join(args.record, f"ch{num:02d}.ts"))
+        else:
+            live_urls[num] = ffmpeg_url(num, conf)
+
     if args.list:
         print(f"{'ch':>4}  {'network':<24} output")
-        for st in stations:
-            print(f"{st['channel_number']:>4}  {st['network_name']:<24} {urls[int(st['channel_number'])]}")
+        rows = [(int(st["channel_number"]), st["network_name"], urls[int(st["channel_number"])]) for st in stations]
+        rows += [(n, live[n].get("name", "LIVE") + " (live)", live_urls[n]) for n in live]
+        for n, name, u in sorted(rows):
+            print(f"{n:>4}  {name:<24} {u}")
         return 0
     if args.check:
         return run_check(stations, conf, args.hours)
@@ -236,9 +305,14 @@ def main():
         return p
 
     procs = {int(st["channel_number"]): (st, spawn(st)) for st in stations}
+    for num, lc in live.items():
+        procs[num] = (None, LiveChannel(num, lc, live_urls[num]).start())
     log.info(f"headend up: {len(procs)} channels")
-    for num, (st, _) in sorted(procs.items()):
-        log.info(f"  ch {num:>3} {st['network_name']:<24} -> {urls[num]}")
+    for num, (st, p) in sorted(procs.items()):
+        if st is None:
+            log.info(f"  ch {num:>3} {p.name + ' (live)':<24} -> {live_urls[num]}")
+        else:
+            log.info(f"  ch {num:>3} {st['network_name']:<24} -> {urls[num]}")
 
     def shutdown(sig, frame):
         log.info("shutting down")
@@ -261,9 +335,12 @@ def main():
             log.error(f"ch {num} exited (code {p.exitcode}) - restarting in {delay}s")
             time.sleep(delay)
             restarts[num].append(time.time())
-            procs[num] = (st, spawn(st))
+            procs[num] = (st, spawn(st)) if st is not None else (None, LiveChannel(num, live[num], live_urls[num]).start())
 
     stop.set()
+    for st, p in procs.values():
+        if st is None:
+            p.terminate()
     for _, p in procs.values():
         p.join(timeout=5)
         if p.is_alive():

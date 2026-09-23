@@ -92,6 +92,21 @@ Add a `headend` block to `confs/main_config.json`. Every key is optional:
 * **`auto_extend_schedule`**: when a channel runs off the end of its schedule, it extends that schedule by a day. The extension runs under a lock shared by all workers. Keep your usual nightly `station_42.py` run anyway.
 * **Skipped channels:** guide, web, streaming and executable channels can't be stream-copied. They are skipped with a warning.
 
+### Live channels
+
+A channel can also come from a live encoder instead of FS42's schedule. The
+emulated Prevue Guide ([docs/prevue.md](prevue.md)) is one; a WeatherStar
+browser capture would be another. List them under `live_channels`:
+
+```json
+"live_channels": { "2": { "name": "PREVUE", "command": "tools/prevue/prevue_channel.sh", "env": { } } }
+```
+
+The headend runs the command with `URL` (the channel's multicast destination in
+ffmpeg syntax), `CHANNEL_NUMBER` and `CHANNEL_NAME` in its environment, and
+restarts it if it exits. A live channel takes that number over from any FS42
+station that has it.
+
 ## 3. Run
 
 ```bash
