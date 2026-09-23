@@ -1,6 +1,7 @@
 # FS-UAE configuration for the Prevue Guide (Amiga ESQ software).
-# Mirrors the community WinUAE setup: 68000, Full ECS, NTSC, KS 2.04 (37.175),
-# 1 MB chip + 8 MB Zorro II fast RAM. The built-in AROS ROM will NOT work.
+# Mirrors tools/prevue/prevue-winuae.uae, which is verified to work in WinUAE:
+# A500+, 68000, Full ECS, NTSC, KS 2.04 (37.175), 1 MB chip + 8 MB Zorro II fast,
+# NO slow RAM, genlock connected. The built-in AROS ROM will NOT work.
 #
 # Paths are filled in by tools/prevue/prevue_channel.sh via --option overrides,
 # so you normally don't edit this file.
@@ -10,9 +11,18 @@ amiga_model = A500+
 ntsc_mode = 1
 cpu = 68000
 chip_memory = 1024
+slow_memory = 0
 fast_memory = 8192
+zorro_iii_memory = 0
+# the software won't finish loading without a genlock (raw UAE option passthrough;
+# matches genlock=true / genlock_alpha=true in the WinUAE config)
+uae_genlock = true
+uae_genlock_alpha = true
+uae_chipset = ecs
+uae_chipset_compatible = A500+
+uae_rtc = MSM6242B
 # kickstart_file = /opt/prevue/kick204.rom            (set by the launcher)
-# floppy_drive_0 = /opt/prevue/PREVUE.ADF             (or hard_drive_0 = folder)
+# floppy_drive_0 = /opt/prevue/PREVUE.ADF             (set by the launcher)
 floppy_drive_speed = 0
 # serial_port = /tmp/prevue-serial                     (set by the launcher)
 

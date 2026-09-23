@@ -19,12 +19,14 @@ FS42 schedules ─► prevue_feed.py ─TCP─► prevue_serial_bridge.py ─pty
 | `prevue_feed.py` | Sends config, clock, DST, title, text ads and two days of listings, paced like a 2400-baud line. Refreshes every 30 minutes and does a full reload each 5 AM listings day. | Tested through the bridge |
 | `tools/prevue_serial_bridge.py` | A virtual serial cable (pseudo-terminal ↔ TCP) that survives feeder restarts. | Tested |
 | `tools/prevue/prevue_channel.sh` | Runs everything above plus the capture and encode, for one headend channel. | Capture, genlock key, music and encode tested with a stand-in emulator |
-| `tools/prevue/prevue.fs-uae` | FS-UAE settings matching the community's WinUAE setup. | **Not yet tested** with the real software |
+| `tools/prevue/prevue-winuae.uae` | The WinUAE configuration verified to run Prevue 9.0.4. | **Working** |
+| `tools/prevue/prevue.fs-uae` | FS-UAE settings mirroring that WinUAE setup. | **Not yet tested** |
 
 ## What you need to supply
 
-1. **Kickstart 2.04 ROM (rev 37.175).** It's still under copyright, and the legitimate source is Cloanto's
-   *Amiga Forever*. The free AROS replacement ROM does **not** run Prevue.
+1. **Kickstart ROMs from Cloanto's *Amiga Forever*.** They're still under copyright, so that's the
+   legitimate source. The working setup uses Kickstart 2.04 (rev 37.175, the A500+ ROM). The free
+   AROS replacement ROM does **not** run Prevue.
 2. **The Prevue software.** Version 9.0.4 is preserved at
    [archive.org/details/prevue](https://archive.org/details/prevue). Version 7.8.3 exists too but
    needs manual patching; see the [emulation guides](https://prevueguide.neocities.org/guides/Esquire).
@@ -34,15 +36,48 @@ FS42 schedules ─► prevue_feed.py ─TCP─► prevue_serial_bridge.py ─pty
    - a promo video to show through the "genlock" (the real channel's top half was satellite video
      behind the Amiga's graphics).
 
-## Emulated machine
+## Emulated machine (verified in WinUAE, 2026-09-23)
 
-The emulator is set up to match the community WinUAE configuration:
+The working configuration is saved as **`tools/prevue/prevue-winuae.uae`**. Load it in WinUAE
+and point its ROM and floppy paths at your files. The settings that matter:
 
-- **CPU and chipset:** 68000, Full ECS, **NTSC**.
-- **Memory:** 1 MB chip RAM plus 8 MB Zorro II fast RAM.
-- **Boot disk:** `PREVUE.ADF` in DF0 with turbo floppy speed, or the extracted software folder as a hard drive.
+| Setting | Value |
+|---|---|
+| Compatibility preset | **A500+** (`chipset_compatible=A500+`, `rtc=MSM6242B`) |
+| CPU | 68000, cycle-exact |
+| Chipset | **Full ECS**, **NTSC** |
+| Kickstart | 2.04 rev 37.175 (A500+) |
+| Memory | 1 MB chip, 8 MB Zorro II fast, **no slow RAM** |
+| Genlock | **on** (`genlock=true`, `genlock_alpha=true`) |
+| Floppy | `PREVUE.ADF` in DF0, turbo speed |
+| Serial | `TCP://0.0.0.0:1234` |
 
-When the Amiga boots with no data yet, it shows **ER007**. That clears once the first listings arrive.
+It boots to the clock, the timeslots and **ER007**. `prevue_feed.py --demo --port 1234`
+then fills the grid (channel highlight and movie colours included) and sets the clock.
+With full cycle-exact emulation, it keeps real time on a modern PC.
+
+Lessons learned:
+
+- **Genlock is required.** The software expects to be keying over satellite video.
+  Without a genlock "connected", it goes black and stalls after the boot CLI.
+  WinUAE's genlock source defaults to nothing (black), and it can also be noise, a test card, a PNG,
+  **a video file, or a capture device**. So WinUAE can do the "satellite video" itself,
+  keyed by the Amiga's real transparency. That's more faithful than keying a colour
+  afterwards in ffmpeg (`PREVUE_KEY_COLOR`), which becomes a fallback for emulators without
+  those genlock sources.
+- **No slow RAM.** The earlier A500+ attempt that hung at "System Initializing" had 512 KB of
+  slow ("trapdoor") RAM from the preset. The working config has `bogomem_size=0`. That's the
+  most likely difference.
+- **Skip the A3000 preset.** It needs a 68030, emulating it costs far more CPU, and the
+  Prevue clock fell behind.
+- **Clock:** the box displayed the time about 2 s late. The feeder now stamps the clock
+  as it's sent, sends it first and last, and runs it `clock_advance_s` (default 2) ahead.
+- **Time zone:** the default `timezone: 6`, with the feeder sending local wall-clock
+  time, put every show in the right slot.
+
+FS-UAE (for the Linux host) still needs the same genlock setting. It's passed through
+as a raw UAE option (`uae_genlock`); if this FS-UAE build doesn't honour it, the fallback
+is WinUAE under Wine.
 
 ## Configure
 
@@ -69,8 +104,8 @@ Add this block to `confs/main_config.json` for the feeder:
 - **`channels.*.hilite` / `alt_hilite`:** the red or light-blue channel highlight in the grid.
 - **`timezone`:** the box's offset setting (hours west of GMT). The feeder sends clock and listings
   in the FS42 host's local wall-clock time. With `6` (Central, Prevue's home in Tulsa), the box
-  shouldn't shift anything. **Verify this against the emulator**, and adjust if the grid's times
-  come out an hour or more off.
+  doesn't shift anything. This is verified: shows landed in the right slots.
+- **`clock_advance_s`:** how far ahead to send the clock (default 2 s) to cover the box's lag.
 
 Then add the channel to the headend's `live_channels`:
 
@@ -108,9 +143,11 @@ Windows machine before setting up the Linux host.
 
 - whether FS-UAE accepts the bridge's pseudo-terminal as `serial_port` (WinUAE's TCP serial is the
   documented route);
-- the timezone/DST handling described above;
-- which colour the genlock should key (`PREVUE_KEY_COLOR`), which means finding the palette colour
-  the software leaves "transparent";
+- what happens at a DST change (the boundaries are sent, but no switch-over has been watched yet);
+- whether FS-UAE honours `uae_genlock` (required: see above);
+- the genlock source: a WinUAE video file or capture device (preferred) versus ffmpeg keying
+  (`PREVUE_KEY_COLOR`), and whether FS-UAE has comparable genlock sources, or whether the Linux host
+  should run WinUAE under Wine;
 - whether 9.0.4 does the `scroll` list format, or whether 7.8.3 is needed for it;
 - how much of 9.0.4's TV Guide Channel branding the custom logo/ad files can turn back into Prevue.
 

@@ -46,6 +46,7 @@ DEFAULTS = {
     "exclude": [],
     "movie_minutes": 90,              # blocks at least this long get the movie colour
     "refresh_minutes": 30,
+    "clock_advance_s": 2.0,           # the box shows the time ~2 s late; send it this far ahead
     "baud": 2400,
 }
 
@@ -206,21 +207,31 @@ def listings_commands(conf, now):
     return out, chans, progs, n
 
 
+def fresh_clock(conf):
+    """Clock command stamped at the moment it's sent, nudged ahead to cover the box's processing lag."""
+    t = datetime.datetime.now() + datetime.timedelta(seconds=float(conf.get("clock_advance_s", 2.0)))
+    t = t.replace(microsecond=0) + datetime.timedelta(seconds=1 if t.microsecond >= 500_000 else 0)
+    local_dst = bool(datetime.datetime.now().astimezone().dst())
+    return P.clock(t, dst=local_dst)
+
+
 def full_update(link, conf, now, first=False):
     cmds, chans, progs, n = listings_commands(conf, now)
-    batch = [P.box_on("*")]
-    batch += config_commands(conf)
-    batch += clock_commands(conf, now)
+    head = config_commands(conf) + clock_commands(conf, now)[1:]          # DST boundaries; clock is sent fresh
+    body = []
     if first:
-        batch += [P.title(conf["title"], "center")]
-        batch += ad_commands(conf)
-    batch += cmds
-    batch += [P.box_off()]
-    total = sum(len(b) for b in batch)
+        body += [P.title(conf["title"], "center")]
+        body += ad_commands(conf)
+    body += cmds
+    total = sum(len(b) for b in head + body) + 40
     log.info(f"sending {len(chans)} channels, {n} programs ({total} bytes, "
-             f"~{P.send_duration(b''.join(batch), conf['baud']):.0f}s at {conf['baud']} baud)")
-    for b in batch:
+             f"~{P.send_duration(b'x' * total, conf['baud']):.0f}s at {conf['baud']} baud)")
+    link.send(P.box_on("*"))
+    link.send(fresh_clock(conf))            # first, and stamped just before it goes out
+    for b in head + body:
         link.send(b)
+    link.send(fresh_clock(conf))            # and again at the end, after the long listings transfer
+    link.send(P.box_off())
 
 
 def print_listings(conf):
