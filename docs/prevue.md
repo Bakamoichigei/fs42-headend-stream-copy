@@ -94,9 +94,11 @@ Add this block to `confs/main_config.json` for the feeder:
   "scroll_speed": 3,
   "timezone": 6,
   "ads": [ [["BEFORE YOU VIEW,", "center"], ["PREVUE!", "center"]] ],
-  "channels": { "4": {"call_letters": "KMOV", "movies": true},
-                "3": {"hilite": true} },
-  "exclude": [2]
+  "channels": { "4":  {"call_letters": "KMOV", "movies": true},
+                "3":  {"hilite": true},
+                "2":  {"title": "Prevue Guide"},
+                "13": {"call_letters": "WEATHER", "title": "Local Forecast"} },
+  "exclude": []
 }
 ```
 
@@ -105,6 +107,11 @@ Add this block to `confs/main_config.json` for the feeder:
 - **`channels.*.movies`:** marks everything on that channel as a movie. Separately, any block
   90 minutes or longer gets the movie attribute; set `movie_minutes` to change that threshold.
 - **`channels.*.hilite` / `alt_hilite`:** the red or light-blue channel highlight in the grid.
+- **Live channels in the grid:** the headend's `live_channels` (Prevue itself, the weather
+  channel) are listed automatically, with one all-day program. `channels.*.title` names that
+  program (the default is the live channel's `name`). A live channel replaces any FS42 station
+  with the same number in the grid, as it does on the headend. To leave one out of the grid,
+  put its number in `exclude`.
 - **`timezone`:** the box's offset setting (hours west of GMT). The feeder sends clock and listings
   in the FS42 host's local wall-clock time. With `6` (Central, Prevue's home in Tulsa), the box
   doesn't shift anything. This is verified: shows landed in the right slots.

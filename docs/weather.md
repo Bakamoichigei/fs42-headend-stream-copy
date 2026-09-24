@@ -37,7 +37,7 @@ Add the channel to the headend's `live_channels` in `confs/main_config.json`:
 ```json
 "headend": {
   "live_channels": {
-    "3": { "name": "WEATHER",
+    "13": { "name": "WEATHER",
            "command": "bash tools/weather/weather_channel.sh",
            "env": { "WEATHER_LOCATION": "05443, USA",
                     "WEATHER_MUSIC": "/nas/music/weatherstar" } }
@@ -45,7 +45,7 @@ Add the channel to the headend's `live_channels` in `confs/main_config.json`:
 }
 ```
 
-Replace `"3"` with the channel number from the channel plan. The headend passes the
+Channel 13 is the weather channel's slot in the [channel plan](channel-plan.md). The headend passes the
 script its multicast destination and restarts it if it exits. `headend.py --list`
 shows it as a live channel.
 
@@ -105,7 +105,7 @@ than widescreen, US units, and **scan lines off**, because a real CRT draws its 
 ```bash
 URL=/tmp/weather.ts WEATHER_SECONDS=120 bash tools/weather/weather_channel.sh    # 2 minutes to a file
 ffplay /tmp/weather.ts
-URL='udp://239.42.0.3:5000?pkt_size=1316&ttl=1' bash tools/weather/weather_channel.sh   # live, Ctrl-C to stop
+URL='udp://239.42.0.13:5000?pkt_size=1316&ttl=1' bash tools/weather/weather_channel.sh   # live, Ctrl-C to stop
 ```
 
 To see the virtual screen while it runs, grab one frame from it:

@@ -5,6 +5,12 @@ Prevue thinks in half-hour timeslots within a 5 AM-to-5 AM "listings day".
 For each station we look at what FS42 has scheduled at the start of every
 timeslot and emit a program record whenever the programme changes, which is
 how the real satellite feed described shows that span several timeslots.
+
+Live headend channels (the Prevue channel itself, the WeatherStar channel)
+have no FS42 schedule. They are listed with one all-day program, titled from
+the prevue "channels" override's "title" (or the live channel's name), and
+they take their number over from any FS42 station that has it, just as they
+do on the headend.
 """
 
 import datetime
@@ -77,15 +83,28 @@ def programs_for_day(station, rec, day_start, movie_minutes=90):
     return out
 
 
-def build(stations, overrides=None, now=None, days=2, exclude=(), movie_minutes=90):
-    """Returns (julian_day_of_today, [channel records], {julian_day: [(slot, source_id, title, flags)]})."""
+def _live_station(num, lc):
+    """A stand-in station record for a headend live channel."""
+    name = str(lc.get("name") or "CH%d" % num)
+    return {"network_name": name, "channel_number": num, "_live": True}
+
+
+def build(stations, overrides=None, now=None, days=2, exclude=(), movie_minutes=90, live=None):
+    """Returns (julian_day_of_today, [channel records], {julian_day: [(slot, source_id, title, flags)]}).
+
+    live: the headend's live_channels, {"2": {"name": "PREVUE", ...}, ...}.
+    """
     overrides = overrides or {}
     now = now or datetime.datetime.now()
     today = P.listings_day_start(now)
+    live = {int(n): lc for n, lc in (live or {}).items()}
+
+    lineup = [st for st in stations if int(st.get("channel_number", 0)) not in live]
+    lineup += [_live_station(n, lc) for n, lc in live.items()]
 
     pairs = []
     seen = {}
-    for st in sorted(stations, key=lambda s: int(s.get("channel_number", 0))):
+    for st in sorted(lineup, key=lambda s: int(s.get("channel_number", 0))):
         num = int(st.get("channel_number", 0))
         if num in exclude or not st.get("_has_schedule", True):
             continue
@@ -103,6 +122,12 @@ def build(stations, overrides=None, now=None, days=2, exclude=(), movie_minutes=
         for d in range(days):
             day_start = today + datetime.timedelta(days=d)
             jd = P.julian_day(day_start)
+            if st.get("_live"):
+                o = overrides.get(str(st["channel_number"]), {})
+                title_ = o.get("title") or st["network_name"]
+                flags = P.PG_MOVIE if rec["movie_channel"] else P.PG_NONE
+                progs.setdefault(jd, []).append((1, rec["source_id"], title_, flags))
+                continue
             for slot, title_, flags in programs_for_day(st, rec, day_start, movie_minutes):
                 progs.setdefault(jd, []).append((slot, rec["source_id"], title_, flags))
     return P.julian_day(today), [rec for _, rec in pairs], progs

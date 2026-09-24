@@ -58,6 +58,8 @@ def load_conf(demo=False):
     raw = StationIO().load_main_config() or {}
     conf = dict(DEFAULTS)
     conf.update(raw.get("prevue", {}))
+    # live headend channels (Prevue, weather) go in the grid too
+    conf["_live_channels"] = (raw.get("headend") or {}).get("live_channels", {})
     return conf
 
 
@@ -197,7 +199,8 @@ def listings_commands(conf, now):
     stations = StationManager().stations
     jd, chans, progs = L.build(stations, conf.get("channels", {}), now,
                                exclude=set(int(x) for x in conf.get("exclude", [])),
-                               movie_minutes=conf.get("movie_minutes", 90))
+                               movie_minutes=conf.get("movie_minutes", 90),
+                               live=conf.get("_live_channels", {}))
     out = [P.channels(jd, chans)]
     n = 0
     for day in sorted(progs, key=lambda d: (d - jd) % 256):

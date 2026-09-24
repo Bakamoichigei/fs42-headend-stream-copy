@@ -9,10 +9,10 @@ composite output then feeds an RF modulator on the CATV plant.
 ```
  transcode box                 FS42 host (headend.py)                      closet rack
  ─────────────                 ──────────────────────                      ───────────
- headend_prep.sh ──► NAS ──►   ch 3 worker ─► 239.42.0.3:5000 ─┐
-   (house format)              ch 4 worker ─► 239.42.0.4:5000 ─┤ IGMP-     XTV125D ─► composite ─► modulator ─┐
+ headend_prep.sh ──► NAS ──►   ch 2 worker ─► 239.42.0.2:5000 ─┐
+   (house format)              ch 3 worker ─► 239.42.0.3:5000 ─┤ IGMP-     XTV125D ─► composite ─► modulator ─┐
                                ...                             ├ snooping  XTV125D ─► composite ─► modulator ─┼─► combiner ─► coax
-                               ch14 worker ─► 239.42.0.14:5000─┘ switch    ...                                ┘
+                               ch13 worker ─► 239.42.0.13:5000─┘ switch    ...                                ┘
 ```
 
 The splicer is pure Python (standard library only). It reads TS packets from
@@ -100,13 +100,15 @@ emulated Prevue Guide ([docs/prevue.md](prevue.md)) is one; the WeatherStar
 
 ```json
 "live_channels": { "2": { "name": "PREVUE",  "command": "tools/prevue/prevue_channel.sh",   "env": { } },
-                   "3": { "name": "WEATHER", "command": "bash tools/weather/weather_channel.sh", "env": { } } }
+                   "13": { "name": "WEATHER", "command": "bash tools/weather/weather_channel.sh", "env": { } } }
 ```
 
 The headend runs the command with `URL` (the channel's multicast destination in
 ffmpeg syntax), `CHANNEL_NUMBER` and `CHANNEL_NAME` in its environment, and
 restarts it if it exits. A live channel takes that number over from any FS42
-station that has it.
+station that has it. The Prevue grid lists live channels too (see [docs/prevue.md](prevue.md)).
+
+Which number each channel gets is set out in [docs/channel-plan.md](channel-plan.md).
 
 ## 3. Run
 
