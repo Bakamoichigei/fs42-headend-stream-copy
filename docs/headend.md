@@ -95,11 +95,12 @@ Add a `headend` block to `confs/main_config.json`. Every key is optional:
 ### Live channels
 
 A channel can also come from a live encoder instead of FS42's schedule. The
-emulated Prevue Guide ([docs/prevue.md](prevue.md)) is one; a WeatherStar
-browser capture would be another. List them under `live_channels`:
+emulated Prevue Guide ([docs/prevue.md](prevue.md)) is one; the WeatherStar
+4000+ weather channel ([docs/weather.md](weather.md)) is another. List them under `live_channels`:
 
 ```json
-"live_channels": { "2": { "name": "PREVUE", "command": "tools/prevue/prevue_channel.sh", "env": { } } }
+"live_channels": { "2": { "name": "PREVUE",  "command": "tools/prevue/prevue_channel.sh",   "env": { } },
+                   "3": { "name": "WEATHER", "command": "bash tools/weather/weather_channel.sh", "env": { } } }
 ```
 
 The headend runs the command with `URL` (the channel's multicast destination in
