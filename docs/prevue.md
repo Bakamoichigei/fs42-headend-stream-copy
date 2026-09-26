@@ -136,6 +136,68 @@ Then add the channel to the headend's `live_channels`:
 The headend gives the script its multicast destination and restarts it if anything in the chain
 dies. `headend.py --list` shows it as a live channel.
 
+## Hand-written listings (no FS42 needed)
+
+To show off a full lineup before FS42 has real schedules, or on the Windows PC with WinUAE,
+write the listings yourself in a JSON file and run:
+
+```bash
+python prevue_feed.py --listings mylineup.json --print                  # check it
+python prevue_feed.py --listings mylineup.json --port 1234              # feed WinUAE and keep refreshing
+```
+
+Start from `confs/examples/prevue_listings.json`, which is a full 14-channel sample. The shape:
+
+```json
+{ "channels": [
+    { "number": 2, "call": "WBAK", "hilite": true,
+      "schedule": { "06:00": "Good Morning", "18:30": "Wheel of Fortune",
+                    "20:00": {"title": "Prime Time Movie", "movie": true} },
+      "saturday": { "07:00": "Saturday Cartoons", "12:00": {"title": "College Football", "sports": true} } },
+    { "number": 4, "call": "BMOV", "movies": true,
+      "loop": [[120, "Back to the Future"], [115, "The Goonies"]] }
+] }
+```
+
+**Per channel:**
+
+| Key | What it does |
+|---|---|
+| `number` | The channel number shown in the grid, e.g. `2` or `42`. The grid sorts by it. |
+| `call` | Call letters or channel name. **7 characters at most**; longer is cut. |
+| `source` | Optional internal ID, 6 characters at most. It's made from `call` if you leave it out. |
+| `hilite` / `alt_hilite` | `true` gives the channel the red or light-blue highlight. |
+| `ppv` / `stereo` / `no_video_tag` | Other channel attributes from the protocol. What 9.0.4 draws for each is still to map (see below). |
+| `movies` | `true` shows everything on the channel in the movie colour. |
+| `schedule` | `{"HH:MM": title, ...}` in 24-hour local time, used every day. Each show runs until the next start time. |
+| `monday` … `sunday` | Same shape. Replaces `schedule` on that day. |
+| `loop` | `[[minutes, title], ...]`, repeated from 5 AM. Use this instead of `schedule` for simple channels. |
+
+**A title** is either plain text or `{"title": "...", "movie": true}`. The other program
+attributes are `sports`, `alt_hilite`, `tag` and `repeat`.
+
+**Mapping the colours:** the protocol has more attribute bits than the red and light-blue channel
+highlights and the movie colour, and which colours 9.0.4 draws for the rest (a green, for instance)
+hasn't been mapped yet. `confs/examples/prevue_flag_test.json` puts one attribute on each channel
+from 2 to 13. Feed it with `--once`, look at the grid, and note what each one does here. The grid's
+colours themselves come from `gradient.ini` on the disk (the `p` key reloads it), so a colour can
+also be changed there.
+
+**Things to know:**
+- **Days run from 5 AM to 5 AM,** the way Prevue (and TV) counts them. `"saturday": {"01:00": "Late Movie"}`
+  means late Saturday night, not early Saturday morning.
+- **The grid works in half-hour slots.** A slot shows whatever is on at its :00 or :30. A show that
+  starts at 7:15 appears from 7:30, and anything shorter than half an hour that doesn't cross a slot
+  boundary won't appear at all. Real listings rounded the same way.
+- **Keep titles short.** A half-hour cell only fits roughly 15–20 characters. Longer shows get wider
+  cells, but abbreviating like the real guide did ("Wheel of Fortune" rather than
+  "Wheel of Fortune with Pat Sajak & Vanna White") looks right. Stick to plain letters, digits and
+  punctuation.
+- **Two days of listings are sent,** and the file is re-read at every half-hour refresh, so edits show
+  up at the next refresh. To send immediately, run it again with `--once`.
+- **Channel settings:** `--listings` uses the feeder's built-in settings (title "BAKACAST CABLE",
+  `timezone: 6` and so on) plus any command-line options, not `main_config.json`.
+
 ## Dot crawl on composite
 
 Computer-drawn text has razor-sharp colour edges, and on a composite or RF TV each one
@@ -154,6 +216,7 @@ Put them in the channel's `env` block to compare on a real set.
 
 ```bash
 python3 prevue_feed.py --print                 # the lineup + listings FS42 would send
+python3 prevue_feed.py --listings my.json --print   # a hand-written lineup instead (see above)
 python3 prevue_feed.py --dump feed.bin         # the raw byte stream, for inspection
 tools/prevue_serial_bridge.py &                # then point FS-UAE (or WinUAE on another PC) at it
 python3 prevue_feed.py --once                  # push one full update

@@ -59,7 +59,7 @@ The forecast location is the `WEATHER_LOCATION` setting. It's currently **05443*
      code in another country;
    - a town: `"Burlington, VT"`;
    - an airport: `"Burlington International Airport"`.
-2. Restart the headend (`sudo systemctl restart fs42-headend`, or Ctrl-C and start it
+2. Restart the headend (`systemctl --user restart fs42-headend`, or Ctrl-C and start it
    again). Only the weather channel picks up the change.
 
 **Optional: pin the exact spot.** WEATHER_LOCATION is looked up through an online

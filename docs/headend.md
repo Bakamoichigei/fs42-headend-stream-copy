@@ -121,7 +121,7 @@ python3 headend.py --record /tmp/rec --duration 600 --fast   # render channels t
 ```
 
 `install/systemd/fs42-headend.service.template` runs the headend as a
-service. Each channel writes its status to `runtime/headend/chNN.json`.
+systemd user service. [a10-bringup.md](a10-bringup.md) walks through setting it up, from a bare Debian box to a single-channel test. Each channel writes its status to `runtime/headend/chNN.json`.
 The file shows what's playing now, splice and error counts, and output
 stalls (NAS hiccups).
 

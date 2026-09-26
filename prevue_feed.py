@@ -12,6 +12,7 @@ socket - see docs/prevue.md).
     python3 prevue_feed.py --once              # send everything once and exit
     python3 prevue_feed.py --dump feed.bin     # write the byte stream to a file instead
     python3 prevue_feed.py --print             # show the lineup/listings it would send
+    python3 prevue_feed.py --listings my.json  # a hand-written lineup instead of FS42's schedules
 
 Configuration: "prevue" block in confs/main_config.json (see docs/prevue.md).
 """
@@ -185,8 +186,12 @@ def demo_listings(now):
 
 
 def listings_commands(conf, now):
-    if conf.get("_demo"):
-        jd, chans, progs = demo_listings(now)
+    if conf.get("_demo") or conf.get("listings_file"):
+        if conf.get("listings_file"):
+            from fs42.prevue import listings_file
+            jd, chans, progs = listings_file.load(conf["listings_file"], now)
+        else:
+            jd, chans, progs = demo_listings(now)
         out = [P.channels(jd, chans)]
         n = 0
         for day in sorted(progs, key=lambda d: (d - jd) % 256):
@@ -248,7 +253,8 @@ def print_listings(conf):
         for slot, sid, t, f in sorted(progs[day]):
             hh = (5 * 60 + (slot - 1) * 30) // 60 % 24
             mm = (slot - 1) * 30 % 60
-            print(f"  {hh:02d}:{mm:02d} [{slot:>2}] {sid:<7} {'M ' if f & P.PG_MOVIE else '  '}{t}")
+            print(f"  {hh:02d}:{mm:02d} [{slot:>2}] {sid:<7} {'M ' if f & P.PG_MOVIE else '  '}{t}"
+                  + (f"  [0x{f:02x}]" if f & ~(P.PG_NONE | P.PG_MOVIE) else ""))
 
 
 def main():
@@ -259,12 +265,21 @@ def main():
     ap.add_argument("--dump", metavar="FILE", help="write the byte stream to FILE instead of the emulator")
     ap.add_argument("--print", action="store_true", help="print the lineup and listings, send nothing")
     ap.add_argument("--demo", action="store_true", help="send a built-in test lineup instead of FS42's schedules")
+    ap.add_argument("--listings", metavar="FILE", help="send a hand-written lineup (JSON) instead of FS42's schedules")
     ap.add_argument("--format", choices=["grid", "scroll"], help="override display_format")
     ap.add_argument("--software", choices=["9", "7.8.3"], help="override software version")
     args = ap.parse_args()
 
-    conf = load_conf(args.demo)
+    conf = load_conf(args.demo or bool(args.listings))
     conf["_demo"] = args.demo
+    if args.listings:
+        conf["listings_file"] = args.listings
+        from fs42.prevue import listings_file
+        try:
+            listings_file.load(args.listings)             # check it now, with a readable error
+        except (OSError, listings_file.ListingsError) as e:
+            print(f"prevue_feed: {e}", file=sys.stderr)
+            return 1
     if args.format:
         conf["display_format"] = args.format
     if args.software:

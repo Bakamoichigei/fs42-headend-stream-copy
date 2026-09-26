@@ -1,7 +1,10 @@
 [Unit]
 Description=FieldStation42 multichannel headend (stream-copy MPEG-TS multicast)
-After=network-online.target remote-fs.target
-Wants=network-online.target
+
+# Installed as a systemd *user* service by install/install_services.sh (like the other FS42
+# services), so: default.target rather than multi-user.target, and no AmbientCapabilities
+# (a user manager can't grant them, and the unit would fail with status 218/CAPABILITIES).
+# The channel workers try to renice themselves to -5 and simply stay at 0 if they can't.
 
 [Service]
 Type=simple
@@ -11,10 +14,8 @@ Restart=always
 RestartSec=5
 KillSignal=SIGTERM
 TimeoutStopSec=15
-# lets the channel workers renice themselves slightly above normal jobs
-AmbientCapabilities=CAP_SYS_NICE
 StandardOutput=journal
 StandardError=journal
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

@@ -5,24 +5,33 @@ promo cards and banners for your own. For running it, see [prevue.md](prevue.md)
 
 ## Getting files off (and back onto) the disk
 
-**amitools** (Python) reads and writes Amiga disk images:
+**The simplest way on Windows is ADF Opus**, a free program that opens an `.adf` like a folder.
+Get it from [ADF Opus 2025](https://github.com/chironb/ADFOpus2025/releases), a maintained
+build, or the classic [ADF Opus](https://sourceforge.net/projects/adfopus/).
+
+1. **Work on a copy.** Duplicate `PREVUE.ADF` and keep the original somewhere safe.
+2. Open the copy in ADF Opus. The disk's files appear in one pane and your Windows folders in the other.
+3. Drag files out to a Windows folder to work on them, and drag your edited versions back in
+   under the **same names**.
+4. Boot the copy in WinUAE to see the result.
+
+**Editing the images:** they're Amiga IFF (ILBM) pictures with fixed palettes.
+[GrafX2](https://en.wikipedia.org/wiki/GrafX2) is a free, Deluxe Paint-style editor for Windows
+that opens and saves IFF with the palette intact, which is exactly what these files need.
+XnView can also *view* them quickly. If a file won't open as a picture, it's probably
+PowerPacker-compressed (the file starts with `PP20`); see [Replacing images](#replacing-images).
+
+**Command line alternative: amitools (Python).**
 
 ```powershell
 pip install amitools
 xdftool PREVUE.ADF list                     # every file, with sizes
 xdftool PREVUE.ADF unpack prevue_files      # copy the whole disk into a folder
-```
-
-To put a modified file back:
-
-```powershell
-xdftool PREVUE.ADF delete Logo-TVG.iff      # remove the original (use the real name from `list`)
+xdftool PREVUE.ADF delete Logo-TVG.iff      # remove an original (use the real name from `list`)
 xdftool PREVUE.ADF write Logo-TVG.iff       # add yours under the same name
 ```
 
-- **Work on a copy.** Keep a pristine `PREVUE.ADF` somewhere safe.
-- **If amitools won't install:** `pip install amitools` sometimes wants a C compiler on Windows.
-  **ADF Opus** is a free Windows program that does the same with drag and drop.
+`pip install amitools` sometimes wants a C compiler on Windows. If it does, use ADF Opus.
 
 ## What's on the disk
 
