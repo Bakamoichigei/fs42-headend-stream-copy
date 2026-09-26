@@ -7,7 +7,7 @@ it plays its one stream full-screen, with no channel guide. This reads the
 headend block of confs/main_config.json (multicast_base, port, per-channel
 overrides) so the groups always match what headend.py sends.
 
-    python3 tools/xtv125d/make_channels_xml.py                 # channels 2-13 -> runtime/xtv125d/chNN/channels.xml
+    python3 tools/xtv125d/make_channels_xml.py                 # channels 2-13,40,42 -> runtime/xtv125d/chNN/channels.xml
     python3 tools/xtv125d/make_channels_xml.py -c 7,42         # just these
     python3 tools/xtv125d/make_channels_xml.py --print -c 7    # show one on stdout
 
@@ -86,7 +86,7 @@ def parse_channels(spec):
 
 def main():
     ap = argparse.ArgumentParser(description="Write XTV125D channels.xml files for the headend's channels")
-    ap.add_argument("-c", "--channels", default="2-13", help="e.g. 2-13 or 3,7,42 (default 2-13)")
+    ap.add_argument("-c", "--channels", default="2-13,40,42", help="e.g. 2-13 or 3,7,42 (default 2-13,40,42)")
     ap.add_argument("--config", default="confs/main_config.json")
     ap.add_argument("--out", default="runtime/xtv125d", help="output folder (default runtime/xtv125d)")
     ap.add_argument("--title", default="Bakacast")

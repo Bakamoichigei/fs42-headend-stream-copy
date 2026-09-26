@@ -99,8 +99,8 @@ emulated Prevue Guide ([docs/prevue.md](prevue.md)) is one; the WeatherStar
 4000+ weather channel ([docs/weather.md](weather.md)) is another. List them under `live_channels`:
 
 ```json
-"live_channels": { "2": { "name": "PREVUE",  "command": "tools/prevue/prevue_channel.sh",   "env": { } },
-                   "13": { "name": "WEATHER", "command": "bash tools/weather/weather_channel.sh", "env": { } } }
+"live_channels": { "40": { "name": "WEATHER", "command": "bash tools/weather/weather_channel.sh", "env": { } },
+                   "42": { "name": "PREVUE",  "command": "tools/prevue/prevue_channel.sh",       "env": { } } }
 ```
 
 The headend runs the command with `URL` (the channel's multicast destination in
@@ -148,7 +148,5 @@ The XTV125D (part no. 8000-0188) is an IP set-top decoder with composite,
 component and HDMI outputs. Among its supported stream types is
 "MPEG2 Multicast Live", which is what this headend emits.
 
-* **One box per channel:** each box stays on its channel's multicast group.
-* **Standalone use:** the boxes run in "Local Mode" from a `channels.xml` in `/root/data/`, with no VEMS server needed. The quick-start guide gives the defaults: telnet `iptv`/`settopbox`, setup password `1234`.
-* **Video output:** set the output to **480i**, since the factory default is 720p. The composite output then carries native NTSC.
-* **`channels.xml` syntax:** check the exact entry for a multicast channel against the "Sample Channels File" section of the quick-start manual. It hasn't been verified here.
+* **One box per channel:** each box runs in Local Fullscreen Mode and plays its channel's group (`tv://239.42.0.N:5000`) at power-on, with no VEMS server needed.
+* **Setup:** `tools/xtv125d/make_channels_xml.py` writes each box's `channels.xml` from this config. [docs/xtv125d.md](xtv125d.md) has the setup-menu steps (480i/NTSC output, Local start mode), loading the file, a bench test, and a checklist for the first box.

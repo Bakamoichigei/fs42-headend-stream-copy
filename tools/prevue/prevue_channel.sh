@@ -7,7 +7,7 @@
 #
 # The headend starts this for any entry in headend.live_channels and passes
 # the channel's multicast URL in $URL. Run it by hand for testing:
-#   URL=udp://239.42.0.2:5000?ttl=1 tools/prevue/prevue_channel.sh
+#   URL=udp://239.42.0.42:5000?ttl=1 tools/prevue/prevue_channel.sh
 #
 # Settings (environment, or headend.live_channels.<n>.env in main_config.json):
 #   PREVUE_KICKSTART   Kickstart 2.04 ROM file (required - e.g. from Amiga Forever)
@@ -16,8 +16,10 @@
 #   PREVUE_PROMO       video file looped behind the Amiga graphics (optional "genlock")
 #   PREVUE_KEY_COLOR   colour the genlock keys out, e.g. 0x000000 (only with PREVUE_PROMO)
 #   PREVUE_DISPLAY     X display number to use (default :42)
+#   CRT_CHROMA_SIGMA / CRT_SATURATION  dot-crawl softening, see tools/crt_soften.sh (default 1.4 / 0.9)
 set -euo pipefail
 cd "$(dirname "$0")/../.."                       # FS42 root
+source tools/crt_soften.sh                       # CRT_FILTER: tame dot crawl on composite
 
 : "${URL:?URL (multicast output) not set}"
 : "${PREVUE_KICKSTART:?set PREVUE_KICKSTART to your Kickstart 2.04 ROM}"
@@ -74,7 +76,7 @@ else
 fi
 ffmpeg -hide_banner -loglevel warning -nostdin \
   "${VIN[@]}" "${AIN[@]}" "${PIN[@]}" \
-  -filter_complex "$FILTER;[v]scale=720:480,setsar=8/9,fps=30000/1001,setfield=tff,format=yuv420p[vo]" \
+  -filter_complex "$FILTER;[v]scale=720:480,setsar=8/9,fps=30000/1001,setfield=tff,${CRT_FILTER}format=yuv420p[vo]" \
   -map "[vo]" -map 1:a \
   -c:v mpeg2video -b:v 4500k -maxrate 6000k -bufsize 1835k -g 15 -bf 2 -flags +cgop+ilme+ildct -sc_threshold 1000000000 \
   -c:a mp2 -b:a 192k -ar 48000 -ac 2 \

@@ -96,8 +96,8 @@ Add this block to `confs/main_config.json` for the feeder:
   "ads": [ [["BEFORE YOU VIEW,", "center"], ["PREVUE!", "center"]] ],
   "channels": { "4":  {"call_letters": "KMOV", "movies": true},
                 "3":  {"hilite": true},
-                "2":  {"title": "Prevue Guide"},
-                "13": {"call_letters": "WEATHER", "title": "Local Forecast"} },
+                "40": {"call_letters": "WEATHER", "title": "Local Forecast"},
+                "42": {"title": "Prevue Guide"} },
   "exclude": []
 }
 ```
@@ -122,7 +122,7 @@ Then add the channel to the headend's `live_channels`:
 ```json
 "headend": {
   "live_channels": {
-    "2": { "name": "PREVUE",
+    "42": { "name": "PREVUE",
            "command": "tools/prevue/prevue_channel.sh",
            "env": { "PREVUE_KICKSTART": "/opt/prevue/kick204.rom",
                     "PREVUE_DISK": "/opt/prevue/PREVUE.ADF",
@@ -135,6 +135,20 @@ Then add the channel to the headend's `live_channels`:
 
 The headend gives the script its multicast destination and restarts it if anything in the chain
 dies. `headend.py --list` shows it as a live channel.
+
+## Dot crawl on composite
+
+Computer-drawn text has razor-sharp colour edges, and on a composite or RF TV each one
+crawls with dots. `prevue_channel.sh` softens only the colour detail, horizontally, down to roughly
+what NTSC can carry (about 1.3 MHz). It also trims saturation slightly. Brightness stays
+sharp, so the text stays crisp. The code is in `tools/crt_soften.sh`, and it's on by default.
+
+| Setting | Default | What it does |
+|---|---|---|
+| `CRT_CHROMA_SIGMA` | `1.4` | Horizontal colour blur, in pixels at 720 wide. Raise it (e.g. `2`) for more softening; `0` turns it off |
+| `CRT_SATURATION` | `0.9` | Saturation multiplier. `1` leaves colour saturation unchanged |
+
+Put them in the channel's `env` block to compare on a real set.
 
 ## Useful commands
 

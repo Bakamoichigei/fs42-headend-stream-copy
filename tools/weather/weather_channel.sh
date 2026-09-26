@@ -6,7 +6,7 @@
 #
 # The headend starts this for any entry in headend.live_channels and passes the
 # channel's multicast URL in $URL. Run it by hand for testing:
-#   URL=udp://239.42.0.3:5000?ttl=1 bash tools/weather/weather_channel.sh
+#   URL=udp://239.42.0.40:5000?ttl=1 bash tools/weather/weather_channel.sh
 #   URL=/tmp/weather.ts WEATHER_SECONDS=120 bash tools/weather/weather_channel.sh   # record 2 min to a file
 #
 # Settings (environment, or headend.live_channels.<n>.env in main_config.json):
@@ -21,8 +21,10 @@
 #   WEATHER_DISPLAY    X display to use (default :43)
 #   WEATHER_CHROMIUM   browser binary (default: chromium, then chromium-browser)
 #   WEATHER_SECONDS    stop after N seconds (testing)
+#   CRT_CHROMA_SIGMA / CRT_SATURATION  dot-crawl softening, see tools/crt_soften.sh (default 1.4 / 0.9)
 set -euo pipefail
 cd "$(dirname "$0")/../.."                       # FS42 root
+source tools/crt_soften.sh                       # CRT_FILTER: tame dot crawl on composite
 
 : "${URL:?URL (multicast output) not set}"
 LOCATION="${WEATHER_LOCATION:-05443, USA}"
@@ -136,7 +138,7 @@ DUR=()
 ffmpeg -hide_banner -loglevel warning -nostdin \
   -thread_queue_size 512 -f x11grab -draw_mouse 0 -framerate 30000/1001 -video_size ${W}x${H} -i "$DISPLAY_NUM" \
   "${AIN[@]}" \
-  -filter_complex "[0:v]scale=720:480:flags=lanczos,setsar=8/9,fps=30000/1001,setfield=tff,format=yuv420p[vo];[1:a]aresample=48000,aformat=channel_layouts=stereo[ao]" \
+  -filter_complex "[0:v]scale=720:480:flags=lanczos,setsar=8/9,fps=30000/1001,setfield=tff,${CRT_FILTER}format=yuv420p[vo];[1:a]aresample=48000,aformat=channel_layouts=stereo[ao]" \
   -map "[vo]" -map "[ao]" "${DUR[@]}" \
   -c:v mpeg2video -b:v 4500k -maxrate 6000k -bufsize 1835k -g 15 -bf 2 -flags +cgop+ilme+ildct -sc_threshold 1000000000 \
   -c:a mp2 -b:a 192k -ar 48000 -ac 2 \

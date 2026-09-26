@@ -37,7 +37,7 @@ Add the channel to the headend's `live_channels` in `confs/main_config.json`:
 ```json
 "headend": {
   "live_channels": {
-    "13": { "name": "WEATHER",
+    "40": { "name": "WEATHER",
            "command": "bash tools/weather/weather_channel.sh",
            "env": { "WEATHER_LOCATION": "05443, USA",
                     "WEATHER_MUSIC": "/nas/music/weatherstar" } }
@@ -45,7 +45,7 @@ Add the channel to the headend's `live_channels` in `confs/main_config.json`:
 }
 ```
 
-Channel 13 is the weather channel's slot in the [channel plan](channel-plan.md). The headend passes the
+Channel 40 (for the WeatherStar 4000) is the weather channel's slot in the [channel plan](channel-plan.md). The headend passes the
 script its multicast destination and restarts it if it exits. `headend.py --list`
 shows it as a live channel.
 
@@ -100,12 +100,28 @@ speeds up the cycle. To see every option, open the local page, change settings, 
 The script already sets these: kiosk mode (no toolbar, starts playing at once), 4:3 rather
 than widescreen, US units, and **scan lines off**, because a real CRT draws its own.
 
+### Dot crawl on composite
+
+Computer-drawn text has razor-sharp colour edges, and on a composite or RF TV each one
+crawls with dots. The script softens only the colour detail, horizontally, down to roughly
+what NTSC can carry (about 1.3 MHz). It also trims saturation slightly. Brightness stays
+sharp, so the text stays crisp. The code is in `tools/crt_soften.sh`, and it's on by default.
+
+| Setting | Default | What it does |
+|---|---|---|
+| `CRT_CHROMA_SIGMA` | `1.4` | Horizontal colour blur, in pixels at 720 wide. Raise it (e.g. `2`) for more softening; `0` turns it off |
+| `CRT_SATURATION` | `0.9` | Saturation multiplier. `1` leaves colour saturation unchanged |
+
+Put them in the channel's `env` block to compare on a real set. In the sandbox, a test
+card of yellow and white text on WeatherStar blue kept its luma edges identical,
+while its sharpest colour steps dropped by about a third.
+
 ## Test by hand
 
 ```bash
 URL=/tmp/weather.ts WEATHER_SECONDS=120 bash tools/weather/weather_channel.sh    # 2 minutes to a file
 ffplay /tmp/weather.ts
-URL='udp://239.42.0.13:5000?pkt_size=1316&ttl=1' bash tools/weather/weather_channel.sh   # live, Ctrl-C to stop
+URL='udp://239.42.0.40:5000?pkt_size=1316&ttl=1' bash tools/weather/weather_channel.sh   # live, Ctrl-C to stop
 ```
 
 To see the virtual screen while it runs, grab one frame from it:

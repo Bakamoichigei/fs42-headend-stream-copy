@@ -23,7 +23,7 @@ tried on a real box yet. [First box: things to check](#first-box-things-to-check
 On the headend box, from the repo:
 
 ```bash
-python3 tools/xtv125d/make_channels_xml.py          # channels 2–13 -> runtime/xtv125d/chNN/channels.xml
+python3 tools/xtv125d/make_channels_xml.py          # channels 2–13, 40, 42 -> runtime/xtv125d/chNN/channels.xml
 python3 tools/xtv125d/make_channels_xml.py -c 42     # e.g. the channel 42 spare
 ```
 
@@ -63,7 +63,7 @@ like this:
    the MAC address without a password.)
 3. **Network:** DHCP is on by default. Give the box a fixed address instead, either statically
    here or as a DHCP reservation, so you can always find it. A pattern that's easy to remember
-   puts the channel in the last digits: ch 7 → `192.168.10.107`, ch 13 → `192.168.10.113`
+   puts the channel in the last digits: ch 7 → `192.168.10.107`, ch 42 → `192.168.10.142`
    (adjust to the decoder network's subnet).
 4. **Start Mode:** **Local**.
 5. **Output:** set **SD Output** to **NTSC**, and **HD Output Configuration** to **480i**.
