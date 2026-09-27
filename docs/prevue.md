@@ -214,6 +214,8 @@ Put them in the channel's `env` block to compare on a real set.
 
 ## Useful commands
 
+The full list, with Windows and Linux versions, is in [prevue-commands.md](prevue-commands.md).
+
 ```bash
 python3 prevue_feed.py --print                 # the lineup + listings FS42 would send
 python3 prevue_feed.py --listings my.json --print   # a hand-written lineup instead (see above)
