@@ -1,0 +1,16 @@
+{
+  "channels": [
+    { "number": 2,  "call": "PLAIN",  "loop": [[60, "No flags"]] },
+    { "number": 3,  "call": "HILITE", "hilite": true,       "loop": [[60, "Channel hilite"]] },
+    { "number": 4,  "call": "ALTHI",  "alt_hilite": true,   "loop": [[60, "Channel alt hilite"]] },
+    { "number": 5,  "call": "PPV",    "ppv": true,          "loop": [[60, "Channel PPV"]] },
+    { "number": 6,  "call": "STEREO", "stereo": true,       "loop": [[60, "Channel stereo"]] },
+    { "number": 7,  "call": "NOVID",  "no_video_tag": true, "loop": [[60, "Channel no-video-tag"]] },
+    { "number": 8,  "call": "MOVIE",  "loop": [[60, {"title": "Program movie", "movie": true}]] },
+    { "number": 9,  "call": "SPORTS", "loop": [[60, {"title": "Program sports", "sports": true}]] },
+    { "number": 10, "call": "PALT",   "loop": [[60, {"title": "Program alt hilite", "alt_hilite": true}]] },
+    { "number": 11, "call": "TAG",    "loop": [[60, {"title": "Program tag", "tag": true}]] },
+    { "number": 12, "call": "REPEAT", "loop": [[60, {"title": "Program repeat", "repeat": true}]] },
+    { "number": 13, "call": "MIX",    "hilite": true, "loop": [[60, {"title": "Hilite + movie", "movie": true}]] }
+  ]
+}

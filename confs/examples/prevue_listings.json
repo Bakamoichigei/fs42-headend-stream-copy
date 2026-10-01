@@ -1,0 +1,35 @@
+{
+  "channels": [
+    { "number": 2, "call": "WBAK", "hilite": true,
+      "schedule": { "05:00": "Early Today", "07:00": "Good Morning", "09:00": "Donahue",
+                    "10:00": "The Price Is Right", "11:00": {"title": "Daytime Movie", "movie": true},
+                    "13:00": "The Young and the Restless", "14:00": "Oprah",
+                    "15:00": "General Hospital", "16:00": "Local News at 4",
+                    "17:00": "Local News", "17:30": "Nightly News", "18:00": "Jeopardy!",
+                    "18:30": "Wheel of Fortune", "19:00": "Night Court",
+                    "19:30": "Cheers", "20:00": {"title": "Prime Time Movie", "movie": true},
+                    "22:00": "Local News at 11", "22:30": "The Tonight Show", "23:30": "Late Night",
+                    "00:30": {"title": "Late Movie", "movie": true}, "02:30": "Sign Off" },
+      "saturday": { "05:00": "Farm Report", "07:00": "Saturday Cartoons", "12:00": "College Football",
+                    "15:30": "Wide World of Sports", "17:00": "Local News", "17:30": "Star Search",
+                    "18:30": "Wheel of Fortune", "19:00": "The Golden Girls", "19:30": "Empty Nest",
+                    "20:00": {"title": "Saturday Night Movie", "movie": true}, "22:00": "Local News at 11",
+                    "22:30": "Saturday Night Live", "01:00": {"title": "Late Movie", "movie": true}, "03:00": "Sign Off" } },
+
+    { "number": 3,  "call": "KIDS",  "loop": [[30, "Cartoon Express"], [30, "DuckTales"], [30, "Chip 'n Dale"]] },
+    { "number": 4,  "call": "BMOV",  "movies": true,
+      "loop": [[120, "Back to the Future"], [115, "The Goonies"], [105, "Ghostbusters"], [100, "E.T."]] },
+    { "number": 5,  "call": "NEWS",  "loop": [[30, "Headline News"]] },
+    { "number": 6,  "call": "MUSIC", "loop": [[60, "Video Countdown"], [30, "Rock Block"], [30, "Unplugged"]] },
+    { "number": 7,  "call": "SPORT", "loop": [[60, {"title": "SportsCenter", "sports": true}], [120, {"title": "College Basketball", "sports": true}]] },
+    { "number": 8,  "call": "SCIFI", "loop": [[60, "Star Trek"], [60, "The Twilight Zone"], [60, "Doctor Who"]] },
+    { "number": 9,  "call": "CLASS", "loop": [[30, "I Love Lucy"], [30, "The Honeymooners"], [30, "The Andy Griffith Show"]] },
+    { "number": 10, "call": "SHOP",  "loop": [[60, "Shop at Home"]] },
+    { "number": 11, "call": "COMDY", "loop": [[30, "Stand-Up Spotlight"], [30, "Comedy Hour"]] },
+    { "number": 12, "call": "DOCS",  "loop": [[60, "Nature"], [60, "History Hour"]] },
+    { "number": 13, "call": "ACCES", "loop": [[60, "Public Access"], [30, "Community Calendar"]] },
+
+    { "number": 40, "call": "WEATHER", "loop": [[1440, "Local Forecast"]] },
+    { "number": 42, "call": "PREVUE",  "alt_hilite": true, "loop": [[1440, "Prevue Guide"]] }
+  ]
+}
