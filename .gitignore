@@ -17,6 +17,9 @@ local/
 fs42/guide_render/static/90s.html
 .idea/
 *confs/
+!confs/
+confs/*
+!confs/examples/
 # C extensions
 *.so
 
