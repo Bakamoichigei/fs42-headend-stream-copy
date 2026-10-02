@@ -7,7 +7,7 @@
 #
 # The headend starts this for any entry in headend.live_channels and passes
 # the channel's multicast URL in $URL. Run it by hand for testing:
-#   URL=udp://239.42.0.42:5000?ttl=1 tools/prevue/prevue_channel.sh
+#   URL='udp://239.42.0.42:5000?pkt_size=1316&ttl=1' tools/prevue/prevue_channel.sh
 #
 # Settings (environment, or headend.live_channels.<n>.env in main_config.json):
 #   PREVUE_KICKSTART   Kickstart 2.04 ROM file (required - e.g. from Amiga Forever)
@@ -16,6 +16,8 @@
 #   PREVUE_PROMO       video file looped behind the Amiga graphics (optional "genlock")
 #   PREVUE_KEY_COLOR   colour the genlock keys out, e.g. 0x000000 (only with PREVUE_PROMO)
 #   PREVUE_DISPLAY     X display number to use (default :42)
+#   PREVUE_FEED_ARGS   extra prevue_feed.py arguments, e.g. "--demo" or "--listings my.json"
+#                      on a box with no FS42 schedules (default: none, i.e. FS42's schedules)
 #   CRT_CHROMA_SIGMA / CRT_SATURATION  dot-crawl softening, see tools/crt_soften.sh (default 1.4 / 0.9)
 set -euo pipefail
 cd "$(dirname "$0")/../.."                       # FS42 root
@@ -50,7 +52,8 @@ fs-uae tools/prevue/prevue.fs-uae --kickstart_file="$PREVUE_KICKSTART" "${DISK_O
 sleep "${PREVUE_BOOT_WAIT:-20}"                   # let it boot to ER007 ("no data yet")
 
 # 4. listings
-python3 prevue_feed.py --port "$PORT" & pids+=($!)
+# shellcheck disable=SC2086  # PREVUE_FEED_ARGS is deliberately word-split
+python3 prevue_feed.py --port "$PORT" ${PREVUE_FEED_ARGS:-} & pids+=($!)
 
 # 5. encode to the house format and send to the channel's multicast group
 VIN=(-thread_queue_size 512 -f x11grab -draw_mouse 0 -framerate 30000/1001 -video_size 720x480 -i "$DISPLAY_NUM")

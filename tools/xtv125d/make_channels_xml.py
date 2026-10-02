@@ -56,7 +56,9 @@ def channel_name(num, conf):
 
 
 def channels_xml(num, conf, title="Bakacast"):
-    # Laid out exactly like the manual's sample (no comments), in case the box's parser is fussy.
+    # Laid out like the box's own sample (/root/data/channels.xml, firmware v2.5.1-vbk), minus
+    # comments. DfltStrm marks the stream played at power-on; the sample's value is just "x"
+    # (and its closing tag is malformed - "<DfltStrm>x<DfltStrm>" - so the parser is lenient).
     url = escape(stream_url(num, conf))
     name = escape(channel_name(num, conf))
     return f"""<?xml version="1.0" encoding="utf-8"?>
@@ -64,10 +66,13 @@ def channels_xml(num, conf, title="Bakacast"):
   <Title>{escape(title)}</Title>
   <GlobalMsg></GlobalMsg>
   <FullScreen>1</FullScreen>
+  <AutoChannelNumbers>0</AutoChannelNumbers>
   <Stream>
     <ProgramName>{name}</ProgramName>
     <Message>{url}</Message>
     <URL>{url}</URL>
+    <DfltStrm>x</DfltStrm>
+    <Channel>{num}</Channel>
   </Stream>
 </STBLocalUI>
 """

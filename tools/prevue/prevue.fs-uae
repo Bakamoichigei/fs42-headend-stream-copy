@@ -15,8 +15,12 @@ slow_memory = 0
 fast_memory = 8192
 zorro_iii_memory = 0
 # the software won't finish loading without a genlock (raw UAE option passthrough;
-# matches genlock=true / genlock_alpha=true in the WinUAE config)
+# matches genlock=true / genlock_alpha=true in the WinUAE config).
+# FS-UAE 3.1.66 (Debian's) knows `genlock` and genlockmode none/noise/testcard only:
+# no genlock_alpha and no video-file source, so it ignores that line and the promo
+# video has to be keyed in ffmpeg (PREVUE_PROMO + PREVUE_KEY_COLOR).
 uae_genlock = true
+uae_genlockmode = none
 uae_genlock_alpha = true
 uae_chipset = ecs
 uae_chipset_compatible = A500+

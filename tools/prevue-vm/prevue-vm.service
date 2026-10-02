@@ -1,0 +1,18 @@
+# Prevue channel on the test VM. Installed by tools/prevue-vm/setup_vm.sh
+# (@USER@ and @REPO@ are filled in there). Settings: /etc/default/prevue-vm
+[Unit]
+Description=Bakacast Prevue channel (FS-UAE -> ffmpeg -> multicast)
+Wants=network-online.target time-sync.target
+After=network-online.target time-sync.target
+
+[Service]
+User=@USER@
+WorkingDirectory=@REPO@
+EnvironmentFile=/etc/default/prevue-vm
+ExecStart=/bin/bash @REPO@/tools/prevue/prevue_channel.sh
+Restart=always
+RestartSec=5
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
