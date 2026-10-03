@@ -1,0 +1,338 @@
+{
+ "channels": [
+  {
+   "number": 2,
+   "call": "KCBS",
+   "source": "CBS006",
+   "schedule": {
+    "12:00": "News",
+    "12:30": "Bold and the Beautiful",
+    "13:00": "As the World Turns",
+    "14:00": "Guiding Light",
+    "15:00": "Price Is Right",
+    "16:00": "Women 2 Women News",
+    "17:00": "News",
+    "18:30": "CBS News",
+    "19:00": "Entertainment Tonight",
+    "19:30": "Hollywood Squares",
+    "20:00": "King of Queens",
+    "20:30": "Ladies Man",
+    "21:00": "Everybody Loves Raymond",
+    "21:30": "Becker",
+    "22:00": "Family Law",
+    "23:00": "News",
+    "23:30": "(11:35) David Letterman",
+    "00:30": "(12:35) Craig Kilborn",
+    "01:30": "( 1:35) News",
+    "02:00": "( 2:05) Inside Edition",
+    "02:30": "( 2:35) Entertainment Tonight"
+   }
+  },
+  {
+   "number": 3,
+   "call": "METMRK",
+   "source": "METMRK",
+   "schedule": {
+    "05:00": "MetroMarket"
+   }
+  },
+  {
+   "number": 4,
+   "call": "KNBC",
+   "source": "NBC019",
+   "schedule": {
+    "12:00": "Sunset Beach",
+    "13:00": "Days of Our Lives",
+    "14:00": "Passions",
+    "15:00": "Rosie O'Donnell",
+    "16:00": "News",
+    "18:30": "NBC News",
+    "19:00": "Extra!",
+    "19:30": "Access Hollywood",
+    "20:00": "Suddenly Susan",
+    "20:30": "Veronica's Closet",
+    "21:00": "Law & Order: Special Victims Unit",
+    "22:00": "Dateline NBC",
+    "23:00": "News",
+    "23:30": "(11:35) Jay Leno",
+    "00:30": "(12:35) Conan O'Brien",
+    "01:30": "( 1:35) Later",
+    "02:00": "( 2:05) Jay Leno"
+   }
+  },
+  {
+   "number": 5,
+   "call": "KTLA",
+   "source": "TWB001",
+   "schedule": {
+    "12:00": "Judge Mills Lane",
+    "12:30": "Judge Mills Lane",
+    "13:00": "Murphy Brown",
+    "13:30": "Family Matters",
+    "14:00": "Pokémon",
+    "14:30": "Histeria!",
+    "15:00": "Big Cartoonie",
+    "15:30": "New Batman/Superman",
+    "16:00": "Pokémon",
+    "16:30": "Batman Beyond",
+    "17:00": "Sister, Sister",
+    "17:30": "Wayans Bros.",
+    "18:00": "Fresh Prince",
+    "18:30": "Fresh Prince",
+    "19:00": "Friends",
+    "19:30": "Seinfeld",
+    "20:00": "7th Heaven",
+    "21:00": "7th Heaven",
+    "22:00": "News",
+    "23:00": "Friends",
+    "23:30": "Caroline in the City",
+    "00:00": "Cheers",
+    "00:30": "The Nanny",
+    "01:00": "Infomercial",
+    "01:30": "Infomercial",
+    "02:00": {
+     "title": "\"A Christmas Carol\" (1997) An animated musical adaptation of the Charles Dickens holiday classic. (1 hr 29 min)",
+     "movie": true
+    }
+   }
+  },
+  {
+   "number": 6,
+   "call": "TBS",
+   "source": "TBS",
+   "schedule": {
+    "11:00": "Matlock",
+    "13:00": "( 1:05) Cosby Show",
+    "13:30": "( 1:35) Cosby Show",
+    "14:00": "( 2:05) Full House",
+    "14:30": "( 2:35) Full House",
+    "15:00": "( 3:05) Roseanne",
+    "15:30": "( 3:35) Roseanne",
+    "16:00": "( 4:05) Fresh Prince",
+    "16:30": "( 4:35) Fresh Prince",
+    "17:00": {
+     "title": "( 5:05) Figure Skating",
+     "sports": true
+    },
+    "19:00": {
+     "title": "( 7:05) \"A Christmas Story\" (1983) Peter Billingsley, Darren McGavin. Charming tale of a 9-year-old and his overwhelming Christmas wish. (1 hr 38 min)",
+     "movie": true
+    },
+    "21:00": {
+     "title": "( 9:05) \"Someone to Watch Over Me\" (1987) Tom Berenger, Mimi Rogers. A married cop falls for the glamorous Manhattan socialite he's protecting. (1 hr 46 min)",
+     "movie": true
+    },
+    "23:00": {
+     "title": "(11:20) \"Perry Mason: The Case of the Lady in the Lake\" (1988) Raymond Burr, David Hasselhoff. Mason defends a man charged with murdering his heiress wife. (1 hr 37 min)",
+     "movie": true
+    },
+    "01:00": "( 1:25) Interstitial",
+    "01:30": "Andy Griffith",
+    "02:00": "Beverly Hillbillies",
+    "02:30": "Gomer Pyle, USMC"
+   }
+  },
+  {
+   "number": 7,
+   "call": "KABC",
+   "source": "ABC002",
+   "schedule": {
+    "12:00": "All My Children",
+    "13:00": "One Life to Live",
+    "14:00": "General Hospital",
+    "15:00": "Oprah Winfrey",
+    "16:00": "News",
+    "16:30": "ABC News",
+    "17:00": "News",
+    "18:00": {
+     "title": "NFL: Broncos at Jaguars (Live)",
+     "sports": true
+    },
+    "21:00": {
+     "title": "Monday Night Live",
+     "sports": true
+    },
+    "22:00": "20/20",
+    "23:00": "News",
+    "23:30": "(11:35) Nightline",
+    "00:00": "(12:05) Politically Incorrect",
+    "00:30": "(12:35) Oprah Winfrey",
+    "01:30": "( 1:35) News",
+    "02:00": "( 2:10) Infomercial",
+    "02:30": "( 2:40) World News Now"
+   }
+  },
+  {
+   "number": 8,
+   "call": "FOXFAM",
+   "source": "FAMW01",
+   "schedule": {
+    "11:30": "It's Itsy Bitsy Time",
+    "12:30": "Wiggles (12:50) Jellabies",
+    "13:00": "Storytime with Thomas",
+    "13:30": "Garage Club Christmas",
+    "14:00": "Donkey Kong Country",
+    "14:30": "Three Friends & Jerry",
+    "15:00": "Angela Anaconda",
+    "15:30": "Angela Anaconda",
+    "16:00": "I Was a Sixth Grade Alien",
+    "16:30": "Big Wolf on Campus",
+    "17:00": "New Addams Family",
+    "17:30": "Two of a Kind",
+    "18:00": "Forgotten Toys",
+    "18:30": "Christmas Tree",
+    "19:00": "Cricket on the Hearth",
+    "20:00": {
+     "title": "\"Angel of Pennsylvania Avenue\" (1996) Robert Urich, Diana Scarwid. Kids want the President to release their innocent dad from jail for Christmas. (2 hrs)",
+     "movie": true
+    },
+    "22:00": "Famous Families",
+    "23:00": "700 Club",
+    "00:00": "Who's the Boss?",
+    "00:30": "Random Acts of Comedy",
+    "01:00": "Paid Programming",
+    "02:00": "700 Club"
+   }
+  },
+  {
+   "number": 9,
+   "call": "KCAL",
+   "source": "KCAL",
+   "schedule": {
+    "12:00": "News",
+    "13:00": "People's Court",
+    "14:00": "News",
+    "15:00": "National Enquirer TV",
+    "15:30": "News",
+    "16:00": "Real TV",
+    "16:30": "Newlywed Game",
+    "17:00": "Dating Game",
+    "17:30": "Change of Heart",
+    "18:00": "Judge Judy",
+    "18:30": "Real TV",
+    "19:00": "Family Feud",
+    "19:30": "Judge Judy",
+    "20:00": "News",
+    "21:00": "News",
+    "22:00": "News",
+    "23:00": "Jerry Springer",
+    "00:00": "Change of Heart",
+    "00:30": "National Enquirer TV",
+    "01:00": "Maury Povich",
+    "02:00": "Infomercial",
+    "02:30": "Infomercial"
+   }
+  },
+  {
+   "number": 10,
+   "call": "NICK",
+   "source": "NICW01",
+   "schedule": {
+    "12:00": "Little Bear",
+    "12:30": "Blue's Clues",
+    "13:00": "Franklin",
+    "13:30": "Maisy",
+    "14:00": "Doug",
+    "14:30": "Doug",
+    "15:00": "Hey Arnold!",
+    "15:30": "Ace Ventura",
+    "16:00": "Garfield & Friends",
+    "16:30": "Rocko's Modern Life",
+    "17:00": "Figure It Out",
+    "17:30": "Kenan & Kel",
+    "18:00": "All That",
+    "18:30": "CatDog",
+    "19:00": "Hey Arnold!",
+    "19:30": "Rugrats",
+    "20:00": "100 Deeds for Eddie McDowd",
+    "20:30": "Rocket Power",
+    "21:00": "Bewitched",
+    "21:30": "Bewitched",
+    "22:00": "Bewitched",
+    "22:30": "Bewitched",
+    "23:00": "Bewitched",
+    "23:30": "Bewitched",
+    "00:00": "Bewitched",
+    "00:30": "Bewitched",
+    "01:00": "Brady Bunch",
+    "01:30": "I Love Lucy",
+    "02:00": "Jeffersons",
+    "02:30": "Laverne & Shirley"
+   }
+  },
+  {
+   "number": 11,
+   "call": "KTTV",
+   "source": "FOX015",
+   "schedule": {
+    "12:00": "I Love Lucy",
+    "12:30": "I Love Lucy",
+    "13:00": "Donny & Marie",
+    "14:00": "Boy Meets World",
+    "14:30": "Magic School Bus",
+    "15:00": "Monster Rancher",
+    "15:30": "Power Rangers Lost Galaxy",
+    "16:00": "Sherlock Holmes in the 22nd Century",
+    "16:30": "Digimon: Digital Monsters",
+    "17:00": "Divorce Court",
+    "17:30": "Married...With Children",
+    "18:00": "3rd Rock from the Sun",
+    "18:30": "Simpsons",
+    "19:00": "Drew Carey",
+    "19:30": "Simpsons",
+    "20:00": "Time of Your Life",
+    "21:00": "Ally McBeal",
+    "22:00": "News",
+    "23:00": "Drew Carey",
+    "23:30": "Married...With Children",
+    "00:00": "Living Single",
+    "00:30": "Home Improvement",
+    "01:00": "Unhappily Ever After",
+    "01:30": "M*A*S*H",
+    "02:00": "Infomercial"
+   }
+  },
+  {
+   "number": 12,
+   "call": "TVGC",
+   "source": "TVGC",
+   "schedule": {
+    "10:00": "TV Guide Channel (Cont.)",
+    "13:00": "TV Guide Channel (Cont.)",
+    "16:00": "TV Guide Channel (Cont.)",
+    "19:00": "TV Guide Channel (Cont.)",
+    "22:00": "TV Guide Channel",
+    "01:00": "TV Guide Channel (Cont.)"
+   }
+  },
+  {
+   "number": 13,
+   "call": "KCOP",
+   "source": "UPN006",
+   "schedule": {
+    "12:00": "Ricki Lake",
+    "13:00": "Leeza",
+    "14:00": "Jenny Jones",
+    "15:00": "Judge Joe Brown",
+    "15:30": "Judge Joe Brown",
+    "16:00": "Montel Williams",
+    "17:00": "Ricki Lake",
+    "18:00": "Blind Date",
+    "18:30": "Mad About You",
+    "19:00": "Frasier",
+    "19:30": "Frasier",
+    "20:00": "Moesha",
+    "20:30": "The Parkers",
+    "21:00": "Grown Ups",
+    "21:30": "Malcolm & Eddie",
+    "22:00": "News",
+    "23:00": "Martin Short",
+    "00:00": "Blind Date",
+    "00:30": "NewsRadio",
+    "01:00": "Infomercial",
+    "01:30": "NewsRadio",
+    "02:00": "Infomercial"
+   }
+  }
+ ]
+}

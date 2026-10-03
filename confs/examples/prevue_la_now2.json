@@ -1,0 +1,1997 @@
+{
+ "channels": [
+  {
+   "number": 2,
+   "call": "KCBS",
+   "source": "CBS006",
+   "schedule": {
+    "13:00": "News",
+    "13:30": "Bold and the Beautiful ",
+    "14:00": "As the World Turns ",
+    "15:00": "Guiding Light ",
+    "16:00": "Price Is Right ",
+    "17:00": "Women 2 Women News |",
+    "18:00": "News",
+    "19:30": "CBS News  |",
+    "20:00": "Entertainment Tonight |",
+    "20:30": "Hollywood Squares",
+    "21:00": "King of Queens   |",
+    "21:30": "Ladies Man   |",
+    "22:00": "Everybody Loves Raymond  |",
+    "22:30": "Becker   |",
+    "23:00": "Family Law   |",
+    "00:00": "News",
+    "00:30": "(11:35) David Letterman  |",
+    "01:30": "(12:35) Craig Kilborn  |",
+    "02:30": "( 1:35) News",
+    "03:00": "( 2:05) Inside Edition",
+    "03:30": "( 2:35) Entertainment Tonight |"
+   }
+  },
+  {
+   "number": 3,
+   "call": "METMRK",
+   "source": "METMRK",
+   "schedule": {
+    "05:00": "MetroMarket"
+   }
+  },
+  {
+   "number": 4,
+   "call": "KNBC",
+   "source": "NBC019",
+   "schedule": {
+    "13:00": "Sunset Beach   |",
+    "14:00": "Days of Our Lives ",
+    "15:00": "Passions  |",
+    "16:00": "Rosie O'Donnell   |",
+    "17:00": "News",
+    "19:30": "NBC News  |",
+    "20:00": "Extra!  |",
+    "20:30": "Access Hollywood   |",
+    "21:00": "Suddenly Susan  |",
+    "21:30": "Veronica's Closet   |",
+    "22:00": "Law & Order: Special Victims Unit   |",
+    "23:00": "Dateline NBC  |",
+    "00:00": "News",
+    "00:30": "(11:35) Jay Leno",
+    "01:30": "(12:35) Conan O'Brien   |",
+    "02:30": "( 1:35) Later",
+    "03:00": "( 2:05) Jay Leno "
+   }
+  },
+  {
+   "number": 5,
+   "call": "KTLA",
+   "source": "TWB001",
+   "schedule": {
+    "13:00": "Judge Mills Lane",
+    "13:30": "Judge Mills Lane",
+    "14:00": "Murphy Brown  |",
+    "14:30": "Family Matters |",
+    "15:00": "Pokémon ",
+    "15:30": "Histeria! ",
+    "16:00": "Big Cartoonie  ",
+    "16:30": "New Batman/Superman ",
+    "17:00": "Pokémon ",
+    "17:30": "Batman Beyond  |",
+    "18:00": "Sister, Sister   |",
+    "18:30": "Wayans Bros.  |",
+    "19:00": "Fresh Prince |",
+    "19:30": "Fresh Prince |",
+    "20:00": "Friends   |",
+    "20:30": "Seinfeld  |",
+    "21:00": "7th Heaven   |",
+    "22:00": "7th Heaven   |",
+    "23:00": "News",
+    "00:00": "Friends   |",
+    "00:30": "Caroline in the City |",
+    "01:00": "Cheers |",
+    "01:30": "The Nanny |",
+    "02:00": "Infomercial",
+    "02:30": "Infomercial",
+    "03:00": {
+     "title": "\"A Christmas Carol\" (1997) An animated musical adaptation of the Charles Dickens holiday classic. | (1 hr 29 min)",
+     "movie": true
+    }
+   }
+  },
+  {
+   "number": 6,
+   "call": "TBS",
+   "source": "TBS",
+   "schedule": {
+    "12:00": "Matlock ",
+    "14:00": "( 1:05) Cosby Show  |",
+    "14:30": "( 1:35) Cosby Show  |",
+    "15:00": "( 2:05) Full House  |",
+    "15:30": "( 2:35) Full House  |",
+    "16:00": "( 3:05) Roseanne  |",
+    "16:30": "( 3:35) Roseanne  |",
+    "17:00": "( 4:05) Fresh Prince  |",
+    "17:30": "( 4:35) Fresh Prince  |",
+    "18:00": {
+     "title": "( 5:05) Figure Skating",
+     "sports": true
+    },
+    "20:00": {
+     "title": "( 7:05) \"A Christmas Story\"  (1983) Peter Billingsley, Darren McGavin. Charming tale of a 9-year-old and his overwhelming Christmas wish. (1 hr 38 min)",
+     "movie": true
+    },
+    "22:00": {
+     "title": "( 9:05) \"Someone to Watch Over Me\"  (1987) Tom Berenger, Mimi Rogers. A married cop falls for the glamorous Manhattan socialite he's protecting.  (1 hr 46 min)",
+     "movie": true
+    },
+    "00:00": {
+     "title": "(11:20) \"Perry Mason: The Case of the Lady in the Lake\"  (1988) Raymond Burr, David Hasselhoff. Mason defends a man charged with murdering his heiress wife. (1 hr 37 min)",
+     "movie": true
+    },
+    "02:00": "( 1:25) Interstitial",
+    "02:30": "Andy Griffith ",
+    "03:00": "Beverly Hillbillies  |",
+    "03:30": "Gomer Pyle, USMC "
+   }
+  },
+  {
+   "number": 7,
+   "call": "KABC",
+   "source": "ABC002",
+   "schedule": {
+    "13:00": "All My Children",
+    "14:00": "One Life to Live  |",
+    "15:00": "General Hospital  |",
+    "16:00": "Oprah Winfrey",
+    "17:00": "News",
+    "17:30": "ABC News  |",
+    "18:00": "News",
+    "19:00": {
+     "title": "NFL: Broncos at Jaguars (Live)",
+     "sports": true
+    },
+    "22:00": {
+     "title": "Monday Night Live",
+     "sports": true
+    },
+    "23:00": "20/20  |",
+    "00:00": "News",
+    "00:30": "(11:35) Nightline",
+    "01:00": "(12:05) Politically Incorrect |",
+    "01:30": "(12:35) Oprah Winfrey",
+    "02:30": "( 1:35) News",
+    "03:00": "( 2:10) Infomercial",
+    "03:30": "( 2:40) World News Now"
+   }
+  },
+  {
+   "number": 8,
+   "call": "FOXFAM",
+   "source": "FAMW01",
+   "schedule": {
+    "12:30": "It's Itsy Bitsy Time ",
+    "13:30": "Wiggles (12:50) Jellabies ",
+    "14:00": "Storytime with Thomas  |",
+    "14:30": "Garage Club Christmas ",
+    "15:00": "Donkey Kong Country",
+    "15:30": "Three Friends & Jerry",
+    "16:00": "Angela Anaconda  |",
+    "16:30": "Angela Anaconda  |",
+    "17:00": "I Was a Sixth Grade Alien",
+    "17:30": "Big Wolf on Campus",
+    "18:00": "New Addams Family  |",
+    "18:30": "Two of a Kind  |",
+    "19:00": "Forgotten Toys ",
+    "19:30": "Christmas Tree ",
+    "20:00": "Cricket on the Hearth ",
+    "21:00": {
+     "title": "\"Angel of Pennsylvania Avenue\"  (1996) Robert Urich, Diana Scarwid. Kids want the President to release their innocent dad from jail for Christmas. | (2 hrs)",
+     "movie": true
+    },
+    "23:00": "Famous Families |",
+    "00:00": "700 Club",
+    "01:00": "Who's the Boss?  |",
+    "01:30": "Random Acts of Comedy ",
+    "02:00": "Paid Programming",
+    "03:00": "700 Club"
+   }
+  },
+  {
+   "number": 9,
+   "call": "KCAL",
+   "source": "KCAL",
+   "schedule": {
+    "13:00": "News",
+    "14:00": "People's Court |",
+    "15:00": "News",
+    "16:00": "National Enquirer TV",
+    "16:30": "News",
+    "17:00": "Real TV ",
+    "17:30": "Newlywed Game",
+    "18:00": "Dating Game",
+    "18:30": "Change of Heart",
+    "19:00": "Judge Judy ",
+    "19:30": "Real TV ",
+    "20:00": "Family Feud",
+    "20:30": "Judge Judy ",
+    "21:00": "News",
+    "22:00": "News",
+    "23:00": "News",
+    "00:00": "Jerry Springer ",
+    "01:00": "Change of Heart",
+    "01:30": "National Enquirer TV",
+    "02:00": "Maury Povich |",
+    "03:00": "Infomercial",
+    "03:30": "Infomercial"
+   }
+  },
+  {
+   "number": 10,
+   "call": "NICK",
+   "source": "NICW01",
+   "schedule": {
+    "13:00": "Little Bear",
+    "13:30": "Blue's Clues |",
+    "14:00": "Franklin  |",
+    "14:30": "Maisy",
+    "15:00": "Doug  |",
+    "15:30": "Doug  |",
+    "16:00": "Hey Arnold!  |",
+    "16:30": "Ace Ventura  |",
+    "17:00": "Garfield & Friends",
+    "17:30": "Rocko's Modern Life |",
+    "18:00": "Figure It Out ",
+    "18:30": "Kenan & Kel  |",
+    "19:00": "All That ",
+    "19:30": "CatDog |",
+    "20:00": "Hey Arnold!  |",
+    "20:30": "Rugrats  |",
+    "21:00": "100 Deeds for Eddie McDowd",
+    "21:30": "Rocket Power",
+    "22:00": "Bewitched",
+    "22:30": "Bewitched",
+    "23:00": "Bewitched",
+    "23:30": "Bewitched",
+    "00:00": "Bewitched",
+    "00:30": "Bewitched",
+    "01:00": "Bewitched",
+    "01:30": "Bewitched",
+    "02:00": "Brady Bunch",
+    "02:30": "I Love Lucy",
+    "03:00": "Jeffersons |",
+    "03:30": "Laverne & Shirley"
+   }
+  },
+  {
+   "number": 11,
+   "call": "KTTV",
+   "source": "FOX015",
+   "schedule": {
+    "13:00": "I Love Lucy",
+    "13:30": "I Love Lucy",
+    "14:00": "Donny & Marie",
+    "15:00": "Boy Meets World  |",
+    "15:30": "Magic School Bus ",
+    "16:00": "Monster Rancher ",
+    "16:30": "Power Rangers Lost Galaxy ",
+    "17:00": "Sherlock Holmes in the 22nd Century   |",
+    "17:30": "Digimon: Digital Monsters ",
+    "18:00": "Divorce Court",
+    "18:30": "Married...With Children   |",
+    "19:00": "3rd Rock from the Sun  |",
+    "19:30": "Simpsons   |",
+    "20:00": "Drew Carey  |",
+    "20:30": "Simpsons   |",
+    "21:00": "Time of Your Life   |",
+    "22:00": "Ally McBeal   |",
+    "23:00": "News",
+    "00:00": "Drew Carey  |",
+    "00:30": "Married...With Children   |",
+    "01:00": "Living Single  |",
+    "01:30": "Home Improvement",
+    "02:00": "Unhappily Ever After   |",
+    "02:30": "M*A*S*H ",
+    "03:00": "Infomercial"
+   }
+  },
+  {
+   "number": 12,
+   "call": "TVGC",
+   "source": "TVGC",
+   "schedule": {
+    "11:00": "TV Guide Channel (Cont.)",
+    "14:00": "TV Guide Channel (Cont.)",
+    "17:00": "TV Guide Channel (Cont.)",
+    "20:00": "TV Guide Channel (Cont.)",
+    "23:00": "TV Guide Channel",
+    "02:00": "TV Guide Channel (Cont.)"
+   }
+  },
+  {
+   "number": 13,
+   "call": "KCOP",
+   "source": "UPN006",
+   "schedule": {
+    "13:00": "Ricki Lake",
+    "14:00": "Leeza  |",
+    "15:00": "Jenny Jones |",
+    "16:00": "Judge Joe Brown |",
+    "16:30": "Judge Joe Brown |",
+    "17:00": "Montel Williams  |",
+    "18:00": "Ricki Lake",
+    "19:00": "Blind Date",
+    "19:30": "Mad About You  |",
+    "20:00": "Frasier  |",
+    "20:30": "Frasier  |",
+    "21:00": "Moesha   |",
+    "21:30": "The Parkers  ",
+    "22:00": "Grown Ups  ",
+    "22:30": "Malcolm & Eddie   |",
+    "23:00": "News",
+    "00:00": "Martin Short",
+    "01:00": "Blind Date",
+    "01:30": "NewsRadio |",
+    "02:00": "Infomercial",
+    "02:30": "NewsRadio |",
+    "03:00": "Infomercial"
+   }
+  },
+  {
+   "number": 14,
+   "call": "USA",
+   "source": "USAW02",
+   "schedule": {
+    "13:00": "Working   |",
+    "13:30": "Naked Truth   |",
+    "14:00": "Single Guy   |",
+    "14:30": "Boston Common   |",
+    "15:00": {
+     "title": "\"Amazing Stories: The Movie V\"  (1987) Andrew McCarthy, Ian Wolfe. Four supernatural tales edited from the TV series.  (1 hr 13 min)",
+     "movie": true
+    },
+    "17:00": "Baywatch   |",
+    "18:00": "Pacific Blue  |",
+    "19:00": "Baywatch   |",
+    "20:00": "JAG   |",
+    "21:00": "Walker, Texas Ranger   |",
+    "22:00": "WWF Raw Is War  |",
+    "00:00": "(11:06) Walker, Texas Ranger   |",
+    "01:00": "(12:06) Silk Stalkings   |",
+    "02:00": "New York Undercover   |",
+    "03:00": "America's Funniest Home Videos   |",
+    "03:30": "Infomercials"
+   }
+  },
+  {
+   "number": 15,
+   "call": "BRAVO",
+   "source": "BRV001",
+   "schedule": {
+    "13:00": "Profiles ",
+    "14:00": {
+     "title": "\"Jesus Christ Superstar\"  (1973) Ted Neeley, Yvonne Elliman. The hit rock opera about the last days of Christ filmed in Israel. (1 hr 47 min)",
+     "movie": true
+    },
+    "16:00": "Brooklyn Bridge ",
+    "16:30": "Inside the Actors Studio ",
+    "18:00": {
+     "title": "\"Wait Until Dark\"  (1967) Audrey Hepburn, Alan Arkin. Thriller with Audrey Hepburn as a blind housewife terrorized by dope smugglers. (1 hr 48 min)",
+     "movie": true
+    },
+    "20:00": "Profiles ",
+    "21:00": {
+     "title": "\"Wait Until Dark\"  (1967) Audrey Hepburn, Alan Arkin. Thriller with Audrey Hepburn as a blind housewife terrorized by dope smugglers. (1 hr 48 min)",
+     "movie": true
+    },
+    "23:00": "Profiles ",
+    "00:00": {
+     "title": "\"Bellman & True\"  (1987) Bernard Hill, Kieran O'Brien. A down-and-out computer engineer is forced into a bank heist. (1 hr 52 min)",
+     "movie": true
+    },
+    "02:30": "Inside the Actors Studio "
+   }
+  },
+  {
+   "number": 17,
+   "call": "DSC",
+   "source": "TDCW04",
+   "schedule": {
+    "13:00": "Christopher Lowell ",
+    "14:00": "Home Matters ",
+    "15:00": "Lynette Jennings Design ",
+    "16:00": "Christopher Lowell ",
+    "17:00": "Great Chefs ",
+    "17:30": "Great Chefs of the World ",
+    "18:00": "Gimme Shelter ",
+    "19:00": "Your New House  ",
+    "20:00": "The Frozen Kingdom ",
+    "21:00": "Thrills of a Theme Park ",
+    "22:00": "No Place to Hide - Little Brother ",
+    "23:00": "Spytek ",
+    "00:00": "Thrills of a Theme Park ",
+    "01:00": "No Place to Hide - Little Brother ",
+    "02:00": "Spytek ",
+    "03:00": "The Frozen Kingdom "
+   }
+  },
+  {
+   "number": 18,
+   "call": "CNN",
+   "source": "CNN",
+   "schedule": {
+    "13:00": "TalkBack Live |",
+    "14:00": "Street Sweep",
+    "14:30": "Showbiz Today  |",
+    "15:00": "Inside Politics |",
+    "16:00": "CNN Worldview",
+    "16:30": "Moneyline |",
+    "17:30": "Crossfire |",
+    "18:00": "World Today",
+    "19:00": "Larry King Live |",
+    "20:00": "CNN NewsStand |",
+    "21:00": {
+     "title": "Sports Tonight |",
+     "sports": true
+    },
+    "21:30": "Moneyline",
+    "22:00": "Larry King Live",
+    "23:00": "CNN NewsStand",
+    "00:00": {
+     "title": "Sports Tonight |",
+     "sports": true
+    },
+    "00:30": "Moneyline |",
+    "01:00": "Showbiz Today ",
+    "01:30": "Crossfire",
+    "02:00": "World News",
+    "02:30": "Newsroom |",
+    "03:00": "Ahead of the Curve"
+   }
+  },
+  {
+   "number": 19,
+   "call": "FOXW",
+   "source": "FSRN19",
+   "schedule": {
+    "13:00": {
+     "title": "Daily Sports Source",
+     "sports": true
+    },
+    "14:00": {
+     "title": "NBA: Pistons at Lakers (Taped Delay)",
+     "sports": true
+    },
+    "16:00": {
+     "title": "Rick Smith's Signature Series",
+     "sports": true
+    },
+    "16:30": {
+     "title": "Views of Golf",
+     "sports": true
+    },
+    "17:00": {
+     "title": "Invert",
+     "sports": true
+    },
+    "17:30": {
+     "title": "Crank",
+     "sports": true
+    },
+    "18:00": {
+     "title": "Rewind",
+     "sports": true
+    },
+    "18:30": {
+     "title": "NFL Under the Helmet",
+     "sports": true
+    },
+    "19:00": {
+     "title": "Football News",
+     "sports": true
+    },
+    "19:30": {
+     "title": "Last Word",
+     "sports": true
+    },
+    "20:00": {
+     "title": "Runnin' with the Pac",
+     "sports": true
+    },
+    "20:30": {
+     "title": "College Basketball: Gonzaga at Washington (Live)",
+     "sports": true
+    },
+    "22:30": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "23:00": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "00:00": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "01:00": {
+     "title": "Last Word",
+     "sports": true
+    },
+    "01:30": {
+     "title": "Rewind",
+     "sports": true
+    },
+    "02:00": {
+     "title": "Invert",
+     "sports": true
+    },
+    "02:30": {
+     "title": "Crank",
+     "sports": true
+    },
+    "03:00": {
+     "title": "College Basketball: Gonzaga at Washington (Taped Delay)",
+     "sports": true
+    }
+   }
+  },
+  {
+   "number": 20,
+   "call": "FSW2",
+   "source": "FSRN20",
+   "schedule": {
+    "13:00": "Infomercial",
+    "13:30": "Infomercial",
+    "14:00": {
+     "title": "High-School Football: CIF Southern Section Division I final (Taped Delay)",
+     "sports": true
+    },
+    "16:00": {
+     "title": "Goin' Deep",
+     "sports": true
+    },
+    "17:00": {
+     "title": "Horse Racing from Los Alamitos",
+     "sports": true
+    },
+    "17:30": {
+     "title": "Halls of Fame",
+     "sports": true
+    },
+    "18:00": {
+     "title": "Last Word",
+     "sports": true
+    },
+    "18:30": {
+     "title": "Football News",
+     "sports": true
+    },
+    "19:00": {
+     "title": "Sports Roundtable",
+     "sports": true
+    },
+    "20:00": {
+     "title": "Clippers Courtside",
+     "sports": true
+    },
+    "20:30": {
+     "title": "NBA: Grizzlies at Clippers (Live)",
+     "sports": true
+    },
+    "23:00": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "00:00": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "01:00": {
+     "title": "Sports Roundtable",
+     "sports": true
+    },
+    "02:00": {
+     "title": "NBA: Grizzlies at Clippers (Taped Delay)",
+     "sports": true
+    },
+    "03:00": {
+     "title": "Horse Racing from Los Alamitos",
+     "sports": true
+    },
+    "03:30": {
+     "title": "Halls of Fame",
+     "sports": true
+    }
+   }
+  },
+  {
+   "number": 21,
+   "call": "ESPN",
+   "source": "ESP001",
+   "schedule": {
+    "12:00": {
+     "title": "SportsCentury |",
+     "sports": true
+    },
+    "14:00": {
+     "title": "NFL Films Presents",
+     "sports": true
+    },
+    "14:30": {
+     "title": "Up Close",
+     "sports": true
+    },
+    "15:00": {
+     "title": "NFL Primetime",
+     "sports": true
+    },
+    "15:30": {
+     "title": "( 2:45) SportsCenter |",
+     "sports": true
+    },
+    "17:00": {
+     "title": "Monday Night Countdown",
+     "sports": true
+    },
+    "19:00": {
+     "title": "Figure Skating: Cup of Russia (Taped Delay)",
+     "sports": true
+    },
+    "21:30": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "22:00": {
+     "title": "SportsCenter |",
+     "sports": true
+    },
+    "23:00": {
+     "title": "SportsCenter |",
+     "sports": true
+    },
+    "00:00": {
+     "title": "SportsCenter |",
+     "sports": true
+    },
+    "01:00": {
+     "title": "Cheerleading Competition: College Cheerleading/Dance Team Championship (Taped Delay)",
+     "sports": true
+    },
+    "02:00": {
+     "title": "NHRA Rear View Mirror",
+     "sports": true
+    },
+    "03:00": {
+     "title": "SportsCenter |",
+     "sports": true
+    }
+   }
+  },
+  {
+   "number": 22,
+   "call": "CABLE",
+   "source": "CTYACC",
+   "schedule": {
+    "11:00": "City Access",
+    "14:00": "City Access",
+    "17:00": "City Access",
+    "20:00": "City Access",
+    "23:00": "City Access",
+    "02:00": "City Access"
+   }
+  },
+  {
+   "number": 23,
+   "call": "KWHY",
+   "source": "KWHY",
+   "schedule": {
+    "13:00": {
+     "title": "\"Los cuatro Juanes\" (1964) Luis Aguilar, Antonio Aguilar. Cuatro héroes de la revolución intentan cumplir su misión. (1 hr 35 min)",
+     "movie": true
+    },
+    "15:00": "La chacala",
+    "16:00": "Romántica Obsesión",
+    "17:00": "Al filo de la noticia",
+    "17:30": "Noticias",
+    "18:00": "¿Quién tiene la razón?",
+    "19:00": "Cuanto cuesta el show",
+    "20:00": "Noticias",
+    "20:30": "Corte del pueblo",
+    "21:00": {
+     "title": "\"Un Hombre Salvaje\" David Reynoso. (2 hrs)",
+     "movie": true
+    },
+    "23:00": "Noticias",
+    "23:30": "La chacala",
+    "00:30": "Programas comerciales",
+    "01:00": "Programas comerciales"
+   }
+  },
+  {
+   "number": 24,
+   "call": "KSCI",
+   "source": "KSCI",
+   "schedule": {
+    "13:00": "Mandarin Drama ",
+    "14:30": "Tea Time",
+    "15:00": "Infomercial",
+    "15:30": "Infomercial",
+    "16:00": "Infomercial",
+    "16:30": "Infomercial",
+    "17:00": "Infomercial",
+    "17:30": "SAKSI",
+    "18:00": "May Ngan News",
+    "18:30": "International Report",
+    "19:00": "News",
+    "19:30": "News",
+    "20:00": "Mandarin Drama ",
+    "21:00": "KTE News Line ( 8:20) KTE Guide",
+    "21:30": "Dear Encounter",
+    "22:00": "News ( 9:25) Real Life",
+    "22:30": "( 9:50) Healthy Life",
+    "23:00": "Kingdom of the Chosun",
+    "23:30": "(10:45) KTE Journal",
+    "00:00": "KTE News Line",
+    "00:30": {
+     "title": "Sports Japan",
+     "sports": true
+    },
+    "01:00": "Infomercial",
+    "01:30": "Infomercial",
+    "02:00": "Infomercial",
+    "02:30": "Infomercial",
+    "03:00": "Shepherd's Chapel "
+   }
+  },
+  {
+   "number": 25,
+   "call": "HBO",
+   "source": "HBOW02",
+   "schedule": {
+    "12:30": {
+     "title": "\"Home Fries\"  (1998) Drew Barrymore, Luke Wilson. A pregnant restaurant cashier finds love with an Air National Guard reservist.  | (1 hr 33 min)",
+     "movie": true
+    },
+    "14:00": {
+     "title": "( 1:15) \"Club Paradise\"  (1986) Robin Williams, Peter O'Toole. A retired fireman buys a dilapidated resort on a Caribbean island.  | (1 hr 35 min)",
+     "movie": true
+    },
+    "16:00": "Family Video Diaries   |",
+    "16:30": {
+     "title": "\"White Hunter, Black Heart\" (1990) Clint Eastwood, Jeff Fahey. Thinly disguised portrait of director John Huston.  | (1 hr 52 min)",
+     "movie": true
+    },
+    "18:30": "Kill for a Kill   |",
+    "19:30": {
+     "title": "\"Second Sight\" (1989) John Larroquette, Bronson Pinchot. A psychic is hired to divine the whereabouts of a kidnapped cleric.  | (1 hr 24 min)",
+     "movie": true
+    },
+    "21:00": {
+     "title": "\"Home Fries\"  (1998) Drew Barrymore, Luke Wilson. A pregnant restaurant cashier finds love with an Air National Guard reservist.  | (1 hr 33 min)",
+     "movie": true
+    },
+    "22:30": "( 9:45) Dennis Miller: The Millennium Special £  |",
+    "00:00": "Women Who Love Killers £  |",
+    "01:00": {
+     "title": "\"RKO 281\" £ (1999) Liev Schreiber, James Cromwell. Biopic about the making of `Citizen Kane,'.  | (1 hr 27 min)",
+     "movie": true
+    },
+    "02:00": "( 1:25) Life of Crime 2 £  |"
+   },
+   "hilite": true
+  },
+  {
+   "number": 26,
+   "call": "HBOPL",
+   "source": "HBO206",
+   "schedule": {
+    "13:00": {
+     "title": "\"Scrooged\"  (1988) Bill Murray, Karen Allen. A new twist on the classic, with a TV exec who doesn't care about anyone.  | (1 hr 41 min)",
+     "movie": true
+    },
+    "14:30": {
+     "title": "( 1:45) \"Double Take\"  (1997) Craig Sheffer, Costas Mandylor. A murder witness thinks his testimony may have convicted an innocent man.  | (1 hr 26 min)",
+     "movie": true
+    },
+    "16:00": {
+     "title": "( 3:15) \"Outrageous Fortune\"  (1987) Bette Midler, Shelley Long. Two rivals discover they're dating the same man.  | (1 hr 40 min)",
+     "movie": true
+    },
+    "18:00": {
+     "title": "\"Dance with Me\" (1998) Vanessa L. Williams, Chayanne. A one-time dance champ meets her match.  | (2 hrs 6 min)",
+     "movie": true
+    },
+    "20:00": {
+     "title": "( 7:15) \"Widow's Kiss\"  (1995) Mackenzie Astin, Beverly D'Angelo. A teen hires a detective to investigate his `black widow' stepmother.  | (1 hr 43 min)",
+     "movie": true
+    },
+    "22:00": {
+     "title": "\"Judgment Day\"  (1999) Suzy Amis, Ice-T. Outer-space debris is heading for Earth, and only one scientist can stop it.  | (1 hr 31 min)",
+     "movie": true
+    },
+    "23:30": "Tracey Takes On...   |",
+    "00:00": "Reverb  ",
+    "01:00": {
+     "title": "\"Executive Target\"  (1996) Michael Madsen, Keith David. A stuntman's wife will be killed unless he helps a band of traitors.  | (1 hr 36 min)",
+     "movie": true
+    },
+    "02:30": {
+     "title": "( 1:40) \"Slums of Beverly Hills\"  (1998) Natasha Lyonne, Alan Arkin. A sexually blossoming teen tries to cope with her nomadic, low-class family.  | (1 hr 31 min)",
+     "movie": true
+    }
+   },
+   "hilite": true
+  },
+  {
+   "number": 27,
+   "call": "AMC",
+   "source": "AMC002",
+   "schedule": {
+    "13:00": {
+     "title": "\"Good Sam\"  (1948) Gary Cooper, Ann Sheridan. A fellow's good Samaritanism causes problems for him and his wife. (1 hr 52 min)",
+     "movie": true
+    },
+    "15:00": {
+     "title": "( 2:15) \"A Farewell to Arms\"  (1957) Rock Hudson, Jennifer Jones. A nurse and an ambulance driver find love during World War I. (2 hrs 32 min)",
+     "movie": true
+    },
+    "18:00": "Hollywood Fashion Machine: Hollywood Rocks",
+    "18:30": {
+     "title": "\"Laura\"  (1944) Gene Tierney, Dana Andrews. A detective investigating a woman's murder falls for her portrait. (1 hr 28 min)",
+     "movie": true
+    },
+    "20:00": {
+     "title": "\"From the Terrace\"  (1960) Joanne Woodward, Paul Newman. Loveless marriage of a socialite and a man dedicated to his career. (2 hrs 24 min)",
+     "movie": true
+    },
+    "22:30": {
+     "title": "\"Mr. Blandings Builds His Dream House\"  (1948) Cary Grant, Myrna Loy. A New Yorker encounters problems building a house in Connecticut. (1 hr 34 min)",
+     "movie": true
+    },
+    "00:00": "(11:15) Hollywood Fashion Machine: Hollywood Rocks",
+    "00:30": {
+     "title": "(11:45) \"Laura\"  (1944) Gene Tierney, Dana Andrews. A detective investigating a woman's murder falls for her portrait. (1 hr 28 min)",
+     "movie": true
+    },
+    "02:00": {
+     "title": "( 1:15) \"The Little Minister\"  (1934) Katharine Hepburn, John Beal. A young Scottish pastor becomes involved with striking workers. (1 hr 44 min)",
+     "movie": true
+    }
+   }
+  },
+  {
+   "number": 28,
+   "call": "KCET",
+   "source": "PBS002",
+   "schedule": {
+    "13:00": "Mister Rogers' Neighborhood",
+    "13:30": "Storytime ",
+    "14:00": "Reading Rainbow ",
+    "14:30": "Wishbone ",
+    "15:00": "Arthur ",
+    "15:30": "Zoom",
+    "16:00": "Jacques Pepin's Kitchen 200: Encore with Claudine ",
+    "16:30": "Jewish Cooking in America ",
+    "17:00": "Charlie Rose",
+    "18:00": "World News for Public Television",
+    "18:30": "Nightly Business Report",
+    "19:00": "Newshour with Jim Lehrer",
+    "20:00": "Life & Times Tonight  |",
+    "20:30": "California Missions ",
+    "21:00": "Dr. Wayne Dyer",
+    "23:00": "Don't Sweat the Small Stuff...and It's All Small Stuff   |",
+    "00:30": "Charlie Rose",
+    "01:30": "Life & Times Tonight  |",
+    "02:00": "To Be Announced",
+    "03:00": "Dr. Wayne Dyer"
+   }
+  },
+  {
+   "number": 29,
+   "call": "TMC",
+   "source": "TMCW02",
+   "schedule": {
+    "12:00": {
+     "title": "(11:10) \"A Gunfight\" (1971) Kirk Douglas, Johnny Cash. The friendship of retired gunslingers is tested by a showdown for profit.  (1 hr 29 min)",
+     "movie": true
+    },
+    "13:30": {
+     "title": "(12:40) \"Casualties\"  (1997) Mark Harmon, Caroline Goodall. An abused housewife's ordeal becomes deadlier when `helped' by a stranger.  (1 hr 26 min)",
+     "movie": true
+    },
+    "15:00": {
+     "title": "( 2:10) \"The Deli\"  (1997) Mike Starr, Matt Keeslar. The owner of an Italian deli struggles with gambling debts. (1 hr 36 min)",
+     "movie": true
+    },
+    "16:30": {
+     "title": "( 3:50) \"Gold\" (1974) Roger Moore, Susannah York. Melodrama centering on a plot to flood a South African mine.  (1 hr 58 min)",
+     "movie": true
+    },
+    "18:30": {
+     "title": "( 5:55) \"Oddball Hall\" (1990) Don Ameche, Burgess Meredith. Four elderly jewel thieves hide out in Africa while waiting for their payoff.  | (1 hr 27 min)",
+     "movie": true
+    },
+    "20:00": {
+     "title": "( 7:25) \"Modern Romance\"  (1981) Albert Brooks, Kathryn Harrold. A film editor tries to survive a failed relationship. (1 hr 33 min)",
+     "movie": true
+    },
+    "22:00": {
+     "title": "\"As Good as It Gets\"  (1997) Jack Nicholson, Helen Hunt. Comedy about a curmudgeon's relationships with a waitress and a gay neighbor.  | (2 hrs 18 min)",
+     "movie": true
+    },
+    "00:00": {
+     "title": "(11:20) \"U-Turn\"  (1997) Sean Penn, Nick Nolte. A hood encounters strange locals in an Arizona town after his car breaks down.  (2 hrs 5 min)",
+     "movie": true
+    },
+    "02:30": {
+     "title": "\"A Brother's Kiss\"  (1997) Nick Chinlund, Michael Raynor. Close siblings shun the temptations of their rough East Harlem neighborhood.  (1 hr 33 min)",
+     "movie": true
+    }
+   },
+   "hilite": true
+  },
+  {
+   "number": 30,
+   "call": "SHOW",
+   "source": "SHOW02",
+   "schedule": {
+    "13:00": {
+     "title": "(12:15) \"Hanky Panky\" (1982) Gene Wilder, Gilda Radner. An innocent architect is caught up in espionage and murder. (1 hr 50 min)",
+     "movie": true
+    },
+    "15:00": {
+     "title": "( 2:15) \"The Destructors\" (1975) Anthony Quinn, Michael Caine. A narcotics officer joins forces with a hit man to nail a mob kingpin.  (1 hr 29 min)",
+     "movie": true
+    },
+    "17:00": {
+     "title": "\"Carousel\"  (1956) Gordon MacRae, Shirley Jones. Rodgers and Hammerstein's hit about ill-fated romance in 19th-century Maine. (2 hrs 8 min)",
+     "movie": true
+    },
+    "19:30": {
+     "title": "\"Wrestling with Alligators\"  (1998) Aleksa Palladino, Joely Richardson.  (1 hr 26 min)",
+     "movie": true
+    },
+    "21:00": {
+     "title": "\"The Big Hit\"  (1998) Mark Wahlberg, Lou Diamond Phillips. A beleaguered hit man and his associates kidnap a rich industrialist's daughter.  | (1 hr 32 min)",
+     "movie": true
+    },
+    "22:30": {
+     "title": "( 9:35) \"Witness to the Execution\"  (1994) Tim Daly, Sean Young. Satire in which a cable exec plans a live telecast of an execution. (1 hr 32 min)",
+     "movie": true
+    },
+    "23:00": {
+     "title": "\"Execution of Justice\"  (1999) Tim Daly, Peter Coyote. A dramatization of the 1978 murders of Harvey Milk and George Moscone.  | (1 hr 43 min)",
+     "movie": true
+    },
+    "00:30": "(11:45) Hoop Life £",
+    "01:30": {
+     "title": "(12:35) \"Deadly Currency\" £ (1994) William Smith, Deron McBee. Gamblers prepare for the biggest wagering day of the year: Super Bowl Sunday.  (1 hr 29 min)",
+     "movie": true
+    },
+    "03:00": {
+     "title": "( 2:05) \"Foxtrap\"  (1986) Fred Williamson, Chris Connelly. Derivative tale about a hired enforcer looking for a missing girl in Europe. | (1 hr 29 min)",
+     "movie": true
+    }
+   },
+   "hilite": true
+  },
+  {
+   "number": 32,
+   "call": "DISNEY",
+   "source": "DISW01",
+   "schedule": {
+    "13:00": "Out of the Box   |",
+    "13:30": "Bear in the Big Blue House  |",
+    "14:00": "Madeline   |",
+    "14:30": "Katie and Orbie   |",
+    "15:00": "Amazing Animals  |",
+    "15:30": "DuckTales  |",
+    "16:00": "Timon & Pumbaa   |",
+    "16:30": "Aladdin  |",
+    "17:00": "Going Wild with Jeff Corwin  |",
+    "17:30": "Ready or Not  | ( 4:55) Music Videos",
+    "18:00": "Torkelsons   |",
+    "18:30": "Growing Pains  | ( 5:55) Music Videos",
+    "19:00": "Growing Pains  |",
+    "19:30": "Smart Guy  |",
+    "20:00": {
+     "title": "\"Babes in Toyland\" (1997) Animated version of Victor Herbert's 1903 operetta. | (1 hr 14 min)",
+     "movie": true
+    },
+    "21:00": {
+     "title": "( 8:20) \"Mr. Headmistress\"  (1998) Harland Williams, Katey Sagal. A slick con man on the run from mob creditors disguises himself as a woman. | (2 hrs)",
+     "movie": true
+    },
+    "23:00": {
+     "title": "\"The Boy Who Could Fly\"  (1986) Jay Underwood, Lucy Deakins. Parable about the friendship between an autistic orphan and his new neighbor. | (1 hr 54 min)",
+     "movie": true
+    },
+    "00:30": "(11:55) Music Videos",
+    "01:00": "Zorro   |",
+    "01:30": "Mickey Mouse Club  |",
+    "02:00": "Walt Disney Presents  |",
+    "03:00": {
+     "title": "\"The Littlest Horse Thieves\"  (1976) Alastair Sim, Peter Barkworth. Three children determine to save coal-mine pit ponies in 1909 Yorkshire. | (1 hr 44 min)",
+     "movie": true
+    }
+   },
+   "hilite": true
+  },
+  {
+   "number": 33,
+   "call": "MAX",
+   "source": "MAXW02",
+   "schedule": {
+    "13:00": {
+     "title": "\"In the Line of Duty: Kidnapped\"  (1995) Dabney Coleman, Timothy Busfield. The FBI hunts for a criminal who's out to ransom two boys he's abducted.  (1 hr 33 min)",
+     "movie": true
+    },
+    "14:30": {
+     "title": "\"The Bounty\" (1984) Mel Gibson, Anthony Hopkins. The classic sea story about mutiny aboard a British ship.  (2 hrs 12 min)",
+     "movie": true
+    },
+    "16:30": {
+     "title": "( 3:45) \"Sphere\"  (1998) Dustin Hoffman, Sharon Stone. A team of brilliant thinkers study a mysterious spacecraft on the ocean floor.  | (2 hrs 14 min)",
+     "movie": true
+    },
+    "19:00": {
+     "title": "\"Switchback\"  (1997) Dennis Quaid, Danny Glover. An FBI agent goes AWOL to find the killer who kidnapped his son.  | (1 hr 58 min)",
+     "movie": true
+    },
+    "21:00": {
+     "title": "\"The Ice Storm\"  (1997) Kevin Kline, Sigourney Weaver. Ang Lee's slice-of-life about married couples coping with their children.  | (1 hr 53 min)",
+     "movie": true
+    },
+    "23:00": {
+     "title": "\"Copycat\"  (1995) Sigourney Weaver, Holly Hunter. A vicious serial killer emulates notorious murderers.  | (2 hrs 4 min)",
+     "movie": true
+    },
+    "01:00": {
+     "title": "\"Alien Resurrection\"  (1997) Sigourney Weaver, Winona Ryder. Ellen Ripley's clone returns to battle more beasts.  | (1 hr 48 min)",
+     "movie": true
+    },
+    "02:30": {
+     "title": "( 1:50) \"Hollywood Dreams\"  (1993) Kelly Cook, Danny Smith. Adult Movie.  (1 hr 19 min)",
+     "movie": true
+    }
+   },
+   "hilite": true
+  },
+  {
+   "number": 34,
+   "call": "KMEX",
+   "source": "KMEX",
+   "schedule": {
+    "13:00": "Enamorada",
+    "14:00": "Cuando hay pasión ",
+    "15:00": "Cosas del Amor",
+    "16:00": "El Gordo y la Flaca",
+    "16:30": "Bla-Blazo ",
+    "17:00": "Cristina ",
+    "18:00": "Primer Impacto",
+    "19:00": "Noticias",
+    "19:30": "Noticiero Univisión",
+    "20:00": "Soñadoras ",
+    "21:00": "Tres mujeres",
+    "23:00": "Cristina ",
+    "00:00": "Noticias",
+    "00:30": "Noticiero Univisión: Ultima Hora",
+    "01:00": "Viviana a la medianoche",
+    "02:00": "El Gordo y la Flaca",
+    "02:30": "Bla-Blazo ",
+    "03:00": "Cristina "
+   }
+  },
+  {
+   "number": 35,
+   "call": "TVJAPN",
+   "source": "TVJAPN",
+   "schedule": {
+    "13:00": "World Japan: This Day (12:15) Business Front Line",
+    "13:30": "(12:35) Japan at Noon",
+    "14:00": "Cooking for Today ( 1:25) Let's Play with Mother",
+    "15:00": "Good Morning, Japan",
+    "16:00": "( 3:15) Pop Jam",
+    "17:00": "Health for Today ( 4:15) Hello from Studio Park",
+    "18:00": "( 5:10) Here's Edo",
+    "18:30": "( 5:55) Beloved Places, Far Away",
+    "19:30": "( 6:45) Asuka",
+    "23:00": "NHK World Dayline Japan  (10:15) Here's Edo",
+    "00:00": "Stage Door",
+    "00:30": "News (11:50) Today's Close Up",
+    "01:00": "(12:20) Beloved Places, Far Away",
+    "02:00": "( 1:05) Japan Travelogue",
+    "03:00": "NHK News"
+   }
+  },
+  {
+   "number": 36,
+   "call": "CSPAN",
+   "source": "CS1001",
+   "schedule": {
+    "13:00": "Public Affairs (Cont.)",
+    "16:00": "Public Affairs (Cont.)",
+    "18:00": "Public Affairs",
+    "21:00": "Public Affairs",
+    "00:00": "Public Affairs",
+    "03:00": "Public Affairs (Cont.)"
+   }
+  },
+  {
+   "number": 37,
+   "call": "CSPAN2",
+   "source": "CS2002",
+   "schedule": {
+    "13:00": "Video Records of the 41 Presidents (Cont.)",
+    "16:00": "Video Records of the 41 Presidents",
+    "18:00": "Public Affairs",
+    "21:00": "Public Affairs (Cont.)",
+    "22:00": "Video Records of the 41 Presidents",
+    "00:00": "Public Affairs",
+    "03:00": "Public Affairs (Cont.)"
+   }
+  },
+  {
+   "number": 38,
+   "call": "HN",
+   "source": "CNHN",
+   "schedule": {
+    "13:00": "Headline News (Cont.)",
+    "16:00": "Headline News (Cont.)",
+    "19:00": "Headline News (Cont.)",
+    "22:00": "Headline News",
+    "01:00": "Headline News (Cont.)"
+   }
+  },
+  {
+   "number": 39,
+   "call": "CNBC",
+   "source": "CNBC",
+   "schedule": {
+    "12:00": "Street Signs |",
+    "14:00": "Market Wrap |",
+    "16:00": "Edge",
+    "16:30": "Business Center",
+    "17:30": "Upfront Tonight",
+    "18:00": "Hardball with Chris Matthews",
+    "19:00": "Rivera Live",
+    "20:00": "News |",
+    "21:00": "Hardball with Chris Matthews",
+    "22:00": "Rivera Live",
+    "23:00": "News |",
+    "00:00": "Business Center",
+    "01:00": "Paid Programming",
+    "03:00": "Today's Business"
+   }
+  },
+  {
+   "number": 40,
+   "call": "TBN",
+   "source": "TRI001",
+   "schedule": {
+    "13:00": "700 Club |",
+    "14:00": "John Hagee Today |",
+    "14:30": "Rod Parsley",
+    "15:00": "Praise the Lord |",
+    "17:00": "Helen Pensanti, M.D.",
+    "17:30": "T.D. Jakes",
+    "18:00": "Behind the Scenes |",
+    "18:30": "R.W. Schambach |",
+    "19:00": "Dino",
+    "19:30": "Jesse Duplantis |",
+    "20:00": "Praise the Lord |",
+    "22:00": "John Jacobs",
+    "22:30": "Pastor E. V. Hill",
+    "23:00": "Jack Van Impe |",
+    "23:30": "This Is Your Day",
+    "00:00": "Bob Larson |",
+    "00:30": "Donald Whitaker",
+    "01:00": "Praise the Lord |"
+   }
+  },
+  {
+   "number": 42,
+   "call": "MTV",
+   "source": "MTVW01",
+   "schedule": {
+    "13:00": "Will TV",
+    "13:30": "News Link",
+    "14:00": "Hot Zone",
+    "15:30": "Ultra Sound",
+    "16:30": "Total Request Live",
+    "18:00": "WebRiot",
+    "18:30": "Blame Game ",
+    "19:00": "Global Groove",
+    "19:30": "Jams Countdown",
+    "20:00": "Beat Suite",
+    "20:30": "Total Request Live",
+    "21:00": "True Life",
+    "21:30": "True Life",
+    "22:00": "Scared Straight! '99",
+    "23:00": "Road Rules ",
+    "23:30": "Road Rules ",
+    "00:00": "Loveline ",
+    "01:00": "Sex in the '90s",
+    "01:30": "Sex in the '90s",
+    "02:00": "1999: The Return of The Rock",
+    "02:30": "Undercover",
+    "03:00": "Springer Break: King and Queen",
+    "03:30": "Grind All Over"
+   }
+  },
+  {
+   "number": 43,
+   "call": "BET",
+   "source": "BET001",
+   "schedule": {
+    "12:00": "Jamm Zone",
+    "14:00": "All",
+    "15:00": "Rap City: The Basement",
+    "17:00": "Hits from the Streets",
+    "18:00": "Sparks |",
+    "18:30": "Amen |",
+    "19:00": "Comicview",
+    "20:00": "Live from L.A.",
+    "21:00": "BET Tonight",
+    "22:00": "Midnight Love",
+    "23:00": "Comicview",
+    "00:00": "Live from L.A.",
+    "01:00": "BET on Jazz",
+    "02:00": "Success N Life",
+    "03:00": "Empowering Disciples",
+    "03:30": "Creflo A. Dollar: Changing Your World"
+   }
+  },
+  {
+   "number": 44,
+   "call": "LIFE",
+   "source": "LIFW01",
+   "schedule": {
+    "13:00": "Unsolved Mysteries  |",
+    "14:00": {
+     "title": "\"A Different Kind of Christmas\"  (1996) Shelley Long, Bruce Kirby. A local Saint Nick wants to open a year-round Santa's Village. (2 hrs)",
+     "movie": true
+    },
+    "16:00": "Party of Five  |",
+    "17:00": "Ellen  |",
+    "17:30": "Ellen  |",
+    "18:00": "Designing Women  |",
+    "18:30": "Designing Women  |",
+    "19:00": "Golden Girls  |",
+    "19:30": "Golden Girls  |",
+    "20:00": "Intimate Portrait |",
+    "21:00": "Beyond Chance ",
+    "22:00": {
+     "title": "\"Deceptions\" (1985) Stefanie Powers, Barry Bostwick. Twin sisters with disparate lives trade identities. (2 hrs)",
+     "movie": true
+    },
+    "00:00": "Golden Girls  |",
+    "00:30": "Golden Girls  |",
+    "01:00": "Designing Women  |",
+    "01:30": "Unsolved Mysteries  |",
+    "02:30": "Commish  |",
+    "03:30": "Paid Programming"
+   }
+  },
+  {
+   "number": 46,
+   "call": "KHSC",
+   "source": "HSN008",
+   "schedule": {
+    "13:00": "Holiday Home",
+    "14:00": "Carolyn Strauss Collection",
+    "15:00": "Allasandra Da Vinci Collection",
+    "15:30": "Ready to Wear",
+    "16:00": "Innova Cooking",
+    "17:00": "Perlier Bath and Body",
+    "18:00": "Holiday Home Solutions",
+    "19:00": "Gifts of Gold",
+    "21:00": "Holiday Home",
+    "23:00": "Coin Collector",
+    "01:00": "Jerome Alexander",
+    "02:00": "Marcasite Jewelry",
+    "03:00": "Carolyn Strauss Collection"
+   }
+  },
+  {
+   "number": 47,
+   "call": "MSNBC",
+   "source": "MSNBC",
+   "schedule": {
+    "13:00": "Crosstalk",
+    "14:00": "Newsfront",
+    "15:00": "Playback with John Gibson",
+    "16:00": "Watch It with Laura Ingraham",
+    "16:30": "Equal Time",
+    "17:00": "Hardball  |",
+    "18:00": "Special Edition",
+    "19:00": "NBC News  |",
+    "20:00": "Headliners & Legends",
+    "21:00": "Special Edition",
+    "22:00": "NBC News  |",
+    "23:00": "Headliners & Legends",
+    "00:00": "Hardball  |",
+    "01:00": "NBC News  |",
+    "02:00": "Headliners & Legends",
+    "03:00": "Special Edition"
+   }
+  },
+  {
+   "number": 50,
+   "call": "KOCE",
+   "source": "PBS244",
+   "schedule": {
+    "13:00": "Instructional Programming (Cont.)",
+    "13:30": "Uncommon Knowledge",
+    "14:00": "Wonderful World of Art",
+    "14:30": "Victory Garden  |",
+    "15:00": "Quilting from the Heartland",
+    "15:30": "Two Fat Ladies",
+    "16:00": "America Sews with Sue Hausmann",
+    "16:30": "Wishbone ",
+    "17:00": "Dragon Tales   |",
+    "17:30": "Arthur  |",
+    "18:00": "Growing Old in a New Age |",
+    "19:00": "BBC World News",
+    "19:30": "Nightly Business Report",
+    "20:00": "Real Orange",
+    "20:30": "Finbar Wright in Concert",
+    "22:00": "Viewer's Choice",
+    "01:00": "Viewer's Choice (Cont.)",
+    "03:00": "Wishbone ",
+    "03:30": "Dragon Tales   |"
+   }
+  },
+  {
+   "number": 52,
+   "call": "KVEA",
+   "source": "KVEA",
+   "schedule": {
+    "13:00": {
+     "title": "\"Los dos hermanos\" (1970) Jorge Rivero, Gregorio Casal. La joven esposa de un rico hacendado mayor tiene una aventura. (1 hr 29 min)",
+     "movie": true
+    },
+    "15:00": "Sevcec",
+    "16:00": "El y Ella",
+    "17:00": "Padre Alberto",
+    "18:00": "Ocurrió así",
+    "19:00": "Noticias",
+    "19:30": "Noticiero Telemundo",
+    "20:00": "Catalina y Sebastián",
+    "21:00": "Señora",
+    "22:00": "Amor de mi vida",
+    "23:00": "Juego Mortal",
+    "00:00": "Noticias",
+    "00:30": "Noticiero Telemundo",
+    "01:00": "Ocurrió así",
+    "02:00": "Buscando pareja",
+    "02:30": "Programas comerciales"
+   }
+  },
+  {
+   "number": 53,
+   "call": "EDUACC",
+   "source": "LO708C",
+   "schedule": {
+    "05:00": "El Camino College"
+   }
+  },
+  {
+   "number": 54,
+   "call": "COMEDY",
+   "source": "CMDW01",
+   "schedule": {
+    "13:00": "Daily Show  |",
+    "13:30": "Vs. |",
+    "14:00": "Saturday Night |",
+    "15:00": "Kids in the Hall",
+    "15:30": "Kids in the Hall",
+    "16:00": "One Night Stand",
+    "16:30": "Win Ben Stein's Money  |",
+    "17:00": {
+     "title": "\"Mannequin 2: On the Move\" (1991) Kristy Swanson, William Ragsdale. Another department-store dummy gets a life. (1 hr 35 min)",
+     "movie": true
+    },
+    "19:00": "Saturday Night |",
+    "20:00": "Daily Show  |",
+    "20:30": "Win Ben Stein's Money  |",
+    "21:00": {
+     "title": "\"Better Off Dead\" (1985) John Cusack, David Ogden Stiers. Uneven comedy about a lovesick teenager. (1 hr 38 min)",
+     "movie": true
+    },
+    "23:00": "Strangers with Candy |",
+    "23:30": "Upright Citizens Brigade |",
+    "00:00": "Daily Show  |",
+    "00:30": "Win Ben Stein's Money  |",
+    "01:00": "Saturday Night |",
+    "02:00": "Kids in the Hall",
+    "02:30": "Daily Show  |",
+    "03:00": {
+     "title": "\"Irreconcilable Differences\" (1984) Ryan O'Neal, Shelley Long. In Hollywood (where else?), a kid sues her squabbling parents for divorce. (1 hr 54 min)",
+     "movie": true
+    }
+   }
+  },
+  {
+   "number": 55,
+   "call": "QVC",
+   "source": "QVC1",
+   "schedule": {
+    "13:00": "Cleaning Solutions",
+    "14:00": "Gifts for Family and Friends",
+    "16:00": "Tech the Halls",
+    "17:00": "NFL Team Shop",
+    "19:00": "PM Style",
+    "21:00": "Gifts for Him",
+    "22:00": "Elienne Aigner: Anniversary Celebration",
+    "23:00": "Southwestern Jewelry",
+    "01:00": "Clothes Out",
+    "02:00": "Around the House",
+    "03:00": "Ring Showcase"
+   }
+  },
+  {
+   "number": 56,
+   "call": "KDOC",
+   "source": "KDOC",
+   "schedule": {
+    "13:00": "Perry Mason",
+    "14:00": "Matlock",
+    "15:00": "700 Club",
+    "16:00": "Gunsmoke ",
+    "17:00": "Streets of San Francisco",
+    "18:00": "Hawaii Five-O",
+    "19:00": "A-Team |",
+    "20:00": "Rockford Files",
+    "21:00": "Infomercial",
+    "21:30": "Infomercial",
+    "22:00": "Matlock",
+    "23:00": "Perry Mason",
+    "00:00": "Hour of Healing",
+    "01:00": "Hot Seat with Wally George",
+    "01:30": "Infomercial",
+    "02:00": "Smash Hits",
+    "02:30": "Infomercial"
+   }
+  },
+  {
+   "number": 57,
+   "call": "PEG",
+   "source": "PEG",
+   "schedule": {
+    "05:00": "Public, Educational & Governmental Access"
+   }
+  },
+  {
+   "number": 58,
+   "call": "KLCS",
+   "source": "PBS243",
+   "schedule": {
+    "13:00": "In Focus",
+    "13:30": "Wishbone ",
+    "14:00": "Arthur  |",
+    "14:30": "World of Work ( 1:45) Power of Place |",
+    "15:00": "( 2:15) Reef Quest",
+    "16:00": "In Italiano",
+    "16:30": "Barney & Friends ",
+    "17:00": "California Missions ",
+    "17:30": "Homework Hotline",
+    "18:00": "Homework Hotline",
+    "18:30": "Choices",
+    "19:00": "In the Mix ",
+    "19:30": "Teen Issues",
+    "20:00": "World News for Public Television",
+    "20:30": "In Focus",
+    "21:00": "The Nutcracker",
+    "22:00": "Christmas Is Coming ",
+    "23:30": "Great Performances ",
+    "01:00": "Charlie Horse Music Pizza"
+   }
+  },
+  {
+   "number": 59,
+   "call": "PUBACC",
+   "source": "PUBACC",
+   "schedule": {
+    "13:00": "Public Access",
+    "13:30": "Public Access",
+    "14:00": "Public Access",
+    "14:30": "Public Access",
+    "15:00": "Public Access",
+    "15:30": "Public Access",
+    "16:00": "Public Access",
+    "16:30": "Public Access",
+    "17:00": "Public Access",
+    "17:30": "Public Access",
+    "18:00": "Public Access",
+    "18:30": "Public Access",
+    "19:00": "Public Access",
+    "19:30": "Public Access",
+    "20:00": "Public Access",
+    "20:30": "Public Access",
+    "21:00": "Public Access",
+    "21:30": "Public Access",
+    "22:00": "Public Access",
+    "22:30": "Public Access",
+    "23:00": "Public Access",
+    "23:30": "Public Access",
+    "00:00": "Public Access",
+    "00:30": "Public Access",
+    "01:00": "Public Access",
+    "01:30": "Public Access",
+    "02:00": "Public Access",
+    "02:30": "Public Access",
+    "03:00": "Public Access",
+    "03:30": "Public Access"
+   }
+  },
+  {
+   "number": 60,
+   "call": "E!",
+   "source": "ETV002",
+   "schedule": {
+    "13:00": "News Weekend",
+    "14:00": "Gossip Show ",
+    "15:00": "Talk Soup ",
+    "16:00": "Fashion Television ",
+    "16:30": "Behind the Scenes ",
+    "17:00": "True Hollywood Story",
+    "19:00": "Coming Attractions ",
+    "19:30": "E! News Daily",
+    "20:00": "Fashion Emergency",
+    "20:30": "Search Party",
+    "21:00": "Talk Soup ",
+    "21:30": "Mysteries and Scandals",
+    "22:00": "True Hollywood Story ",
+    "00:00": "Howard Stern ",
+    "00:30": "Howard Stern ",
+    "01:00": "Making of a Supermodel ",
+    "02:00": "Talk Soup ",
+    "02:30": "Search Party",
+    "03:00": "Howard Stern ",
+    "03:30": "Howard Stern "
+   }
+  },
+  {
+   "number": 61,
+   "call": "TRAVEL",
+   "source": "TRVL",
+   "schedule": {
+    "13:00": "Adventure Crazy ",
+    "13:30": "Tourist ",
+    "14:00": "Lonely Planet ",
+    "15:00": "Curiosities Around the World ",
+    "15:30": "Simply Unbelievable ",
+    "16:00": "Once Upon an Island  ",
+    "17:00": "Adventure Bound ",
+    "18:00": "Lonely Planet ",
+    "19:00": "Trailblazers ",
+    "20:00": "Amazing Destinations ",
+    "21:00": "Lonely Planet ",
+    "22:00": "Trailblazers ",
+    "23:00": "Amazing Destinations ",
+    "00:00": "Curiosities Around the World ",
+    "00:30": "Simply Unbelievable ",
+    "01:00": "Paid Programming"
+   }
+  },
+  {
+   "number": 62,
+   "call": "KRCA",
+   "source": "KRCA",
+   "schedule": {
+    "13:00": "Noticias",
+    "13:30": "La Bola",
+    "14:00": {
+     "title": "\"Cine Los Angeles\" (2 hrs)",
+     "movie": true
+    },
+    "16:00": "¡Qué buena TV!",
+    "17:00": "Noticias",
+    "17:30": {
+     "title": "Score Final",
+     "sports": true
+    },
+    "18:00": "Paid Programming",
+    "18:30": "Paid Programming",
+    "19:00": "To Be Announced",
+    "19:30": "Little Saigon TV News",
+    "20:00": "ACTV News",
+    "21:00": "Panda TV Magazine",
+    "22:00": "Korean News",
+    "00:30": "Paid Programming",
+    "02:00": "To Be Announced"
+   }
+  },
+  {
+   "number": 64,
+   "call": "ESPN2",
+   "source": "2ESPN",
+   "schedule": {
+    "13:00": {
+     "title": "Worldwide Soccer",
+     "sports": true
+    },
+    "13:30": {
+     "title": "ASA In-Line Tour Best Wrecks",
+     "sports": true
+    },
+    "14:00": {
+     "title": "In Line Skating: ASA Pro Tour World Team Challenge (Taped Delay)",
+     "sports": true
+    },
+    "15:00": {
+     "title": "Sports News",
+     "sports": true
+    },
+    "15:30": "Sportsman's Quest",
+    "16:00": {
+     "title": "Legends of the Road",
+     "sports": true
+    },
+    "16:30": {
+     "title": "Motocross: Freestyle Moto-X (Taped Delay)",
+     "sports": true
+    },
+    "17:00": {
+     "title": "Rodeo: National Finals (Taped Delay)",
+     "sports": true
+    },
+    "19:00": {
+     "title": "Bowling: PBA Japan Cup (Taped Delay)",
+     "sports": true
+    },
+    "20:30": {
+     "title": "Bodybuilding: Fitness Universe Pageant (Taped Delay)",
+     "sports": true
+    },
+    "22:00": {
+     "title": "Friday Night Fights: Harris-St. Clair (junior welterweights) (Taped Delay)",
+     "sports": true
+    },
+    "00:00": {
+     "title": "Arm Wrestling: Pro Football Team competition (Taped Delay)",
+     "sports": true
+    },
+    "00:30": {
+     "title": "NFL's Greatest Moments",
+     "sports": true
+    },
+    "01:00": {
+     "title": "Up Close",
+     "sports": true
+    },
+    "01:30": {
+     "title": "Motoworld",
+     "sports": true
+    },
+    "02:00": {
+     "title": "Cheerleading Competition: Division III National High-School Championship (Taped Delay)",
+     "sports": true
+    },
+    "02:30": {
+     "title": "Cheerleading: National High School Championships (Taped Delay)",
+     "sports": true
+    },
+    "03:00": {
+     "title": "Cheerleading Competition: National All-Star Championships (Taped Delay)",
+     "sports": true
+    }
+   }
+  },
+  {
+   "number": 65,
+   "call": "FNC",
+   "source": "FNC",
+   "schedule": {
+    "13:00": "News |",
+    "14:00": "Your World with Neil Cavuto |",
+    "16:00": "Special Report with Brit Hume |",
+    "17:00": "The Fox Report |",
+    "18:00": "O'Reilly Factor |",
+    "19:00": "Hannity and Colmes |",
+    "20:00": "The Edge with Paula Zahn |",
+    "21:00": "O'Reilly Factor |",
+    "22:00": "Special Report with Brit Hume |",
+    "23:00": "Your World with Neil Cavuto",
+    "00:00": "Hannity and Colmes",
+    "01:00": "The Edge with Paula Zahn",
+    "02:00": "O'Reilly Factor",
+    "03:00": "Your World with Neil Cavuto"
+   }
+  },
+  {
+   "number": 66,
+   "call": "AP",
+   "source": "APTDC1",
+   "schedule": {
+    "13:00": "Petsburgh USA ",
+    "13:30": "Breed All About It ",
+    "14:00": "Lassie ",
+    "14:30": "Crocodile Hunter's Croc Files ",
+    "15:00": "Judge Wapner's Animal Court ",
+    "15:30": "Judge Wapner's Animal Court ",
+    "16:00": "Zig & Zag: Alpha Dog Challenge ",
+    "16:30": "Pet Project ",
+    "17:00": "Planet's Funniest Animals ",
+    "17:30": "Aquanauts ",
+    "18:00": "Call of the Wild",
+    "19:00": "Celebrity Crusaders ",
+    "20:00": "Emergency Vets ",
+    "20:30": "Wild Rescues",
+    "21:00": "Call of the Wild",
+    "22:00": "Celebrity Crusaders ",
+    "23:00": "Emergency Vets ",
+    "23:30": "Wild Rescues",
+    "00:00": "Planet's Funniest Animals ",
+    "00:30": "Aquanauts ",
+    "01:00": "Lassie ",
+    "01:30": "Timmy and Lassie",
+    "02:00": "Jeff's Collie",
+    "02:30": "Gentle Ben",
+    "03:00": "Skippy ",
+    "03:30": "Flipper"
+   }
+  },
+  {
+   "number": 67,
+   "call": "TNT",
+   "source": "TNT002",
+   "schedule": {
+    "12:00": {
+     "title": "\"Pee-wee's Big Adventure\"  (1985) Paul Reubens, Elizabeth Daily. Pee-wee Herman searches for his missing bicycle. | (1 hr 30 min)",
+     "movie": true
+    },
+    "14:00": {
+     "title": "\"Short Circuit\"  (1986) Ally Sheedy, Steve Guttenberg. A sophisticated robot accidentally lands at the home of an animal lover. (1 hr 39 min)",
+     "movie": true
+    },
+    "16:00": "Kung Fu: The Legend Continues  |",
+    "17:00": "L.A. Heat   |",
+    "18:00": "In the Heat of the Night   |",
+    "19:00": "Due South  |",
+    "20:00": "ER   |",
+    "21:00": {
+     "title": "WCW Wrestling  |",
+     "sports": true
+    },
+    "22:00": {
+     "title": "WCW Wrestling  |",
+     "sports": true
+    },
+    "23:00": {
+     "title": "WCW Wrestling  |",
+     "sports": true
+    },
+    "00:00": {
+     "title": "\"Who's the Man?\"  (1993) Ed Lover, Doctor Dre. Two barbers turned cops investigate a gentrification scheme in Harlem. (1 hr 25 min)",
+     "movie": true
+    },
+    "02:00": {
+     "title": "WCW Wrestling  |",
+     "sports": true
+    },
+    "03:00": {
+     "title": "WCW Wrestling  |",
+     "sports": true
+    }
+   }
+  },
+  {
+   "number": 68,
+   "call": "KPXN",
+   "source": "PAX010",
+   "schedule": {
+    "13:00": "Paid Programming",
+    "13:30": "Paid Programming",
+    "14:00": "Big Valley",
+    "15:00": "Bonanza",
+    "16:00": "Dr. Quinn, Medicine Woman |",
+    "17:00": "Hogan Family |",
+    "17:30": "Dave's World |",
+    "18:00": "Touched by an Angel  |",
+    "19:00": "Supermarket Sweep ",
+    "19:30": "Shop 'til You Drop",
+    "20:00": "Treasures in Your Home",
+    "21:00": "Hope Island",
+    "22:00": "Touched by an Angel   |",
+    "23:00": "Diagnosis Murder   |",
+    "00:00": "Twice in a Lifetime",
+    "01:00": "Paid Programming",
+    "01:30": "Paid Programming",
+    "02:00": "Worship"
+   }
+  },
+  {
+   "number": 69,
+   "call": "HIST",
+   "source": "THC",
+   "schedule": {
+    "13:00": "In Search Of... ",
+    "13:30": "In Search Of... ",
+    "14:00": "FBI: The Untold Stories ",
+    "14:30": "History's Crimes and Trials ",
+    "15:00": "Weapons at War ",
+    "16:00": "Frontier: Legends of the Old Northwest  |",
+    "17:00": "Pope Pius XII and the Holocaust ",
+    "18:00": "History's Mysteries  |",
+    "19:00": "History's Greatest Blunders ",
+    "20:00": "Modern Marvels  |",
+    "21:00": "History's Lost and Found  |",
+    "22:00": "History's Mysteries  |",
+    "23:00": "History's Greatest Blunders ",
+    "00:00": "Modern Marvels  |",
+    "01:00": "History's Lost and Found  |",
+    "02:00": "History's Mysteries  |",
+    "03:00": "Year by Year "
+   }
+  },
+  {
+   "number": 95,
+   "call": "GOLF",
+   "source": "GOLF",
+   "schedule": {
+    "17:00": {
+     "title": "Golf Channel Academy",
+     "sports": true
+    },
+    "17:30": {
+     "title": "Golf Central",
+     "sports": true
+    },
+    "18:00": {
+     "title": "Golf Talk Live",
+     "sports": true
+    },
+    "19:00": {
+     "title": "Golf Channel Academy",
+     "sports": true
+    },
+    "19:30": {
+     "title": "Leaderboard Report",
+     "sports": true
+    },
+    "20:00": {
+     "title": "Masters Highlights",
+     "sports": true
+    },
+    "21:00": {
+     "title": "Golf Central",
+     "sports": true
+    },
+    "21:30": {
+     "title": "Golf Channel Academy",
+     "sports": true
+    },
+    "22:00": {
+     "title": "Golf Talk Live",
+     "sports": true
+    },
+    "23:00": {
+     "title": "Golf Channel Academy",
+     "sports": true
+    },
+    "23:30": {
+     "title": "Leaderboard Report",
+     "sports": true
+    },
+    "00:00": {
+     "title": "Masters Highlights",
+     "sports": true
+    },
+    "01:00": {
+     "title": "Golf Channel Academy",
+     "sports": true
+    },
+    "01:30": {
+     "title": "Golf Central",
+     "sports": true
+    },
+    "02:00": "Paid Programming",
+    "02:30": {
+     "title": "Golf Central",
+     "sports": true
+    },
+    "03:00": "Paid Programming",
+    "03:30": "Paid Programming"
+   }
+  },
+  {
+   "number": 95,
+   "call": "TWC",
+   "source": "TWC001",
+   "schedule": {
+    "13:00": "The Weather Channel",
+    "16:00": "The Weather Channel"
+   }
+  },
+  {
+   "number": 96,
+   "call": "SPICE",
+   "source": "SPI001",
+   "schedule": {
+    "12:30": {
+     "title": "\"Extreme Close Up: Taylor Hayes\" £ (1 hr 30 min)",
+     "movie": true
+    },
+    "14:00": {
+     "title": "\"Bodyslammin' 2: Down & Dirty\" £ (1 hr 30 min)",
+     "movie": true
+    },
+    "15:30": {
+     "title": "\"PU Lines: Water Beauties\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    },
+    "17:00": {
+     "title": "\"Talk Dirty to Me #11\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    },
+    "18:30": {
+     "title": "\"Naughty Angels\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    },
+    "20:00": {
+     "title": "\"Sex Safari\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    },
+    "21:30": {
+     "title": "\"Dangerous Lady\" £ (1998) (1 hr 30 min)",
+     "movie": true
+    },
+    "23:00": {
+     "title": "\"Couch Tales\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    },
+    "00:30": {
+     "title": "\"Extreme Close Up: Taylor Hayes\" £ (1 hr 30 min)",
+     "movie": true
+    },
+    "02:00": {
+     "title": "\"Bodyslammin' 2: Down & Dirty\" £ (1 hr 30 min)",
+     "movie": true
+    },
+    "03:30": {
+     "title": "\"PU Lines: Water Beauties\" £ (1999) (1 hr 30 min)",
+     "movie": true
+    }
+   }
+  },
+  {
+   "number": 97,
+   "call": "VC1",
+   "source": "YV1002",
+   "schedule": {
+    "12:30": {
+     "title": "\"The Blair Witch Project\"  (1999) Heather Donahue, Michael Williams. Independent hit about student filmmakers who are terrorized in the forest.  | (1 hr 21 min)",
+     "movie": true
+    },
+    "14:00": {
+     "title": "\"10 Things I Hate About You\"  (1999) Heath Ledger, Julia Stiles. A popular high-schooler is forbidden to date until her sister finds a beau.  | (1 hr 38 min)",
+     "movie": true
+    },
+    "16:00": {
+     "title": "\"Life\"  (1999) Eddie Murphy, Martin Lawrence. Two men are jailed in 1932 Mississippi for a murder they didn't commit.  | (1 hr 49 min)",
+     "movie": true
+    },
+    "18:00": {
+     "title": "\"Life Is Beautiful\"  (1998) Roberto Benigni, Nicoletta Braschi. Dubbed version of a tale of a man and his son enduring concentration-camp life.  | (1 hr 57 min)",
+     "movie": true
+    },
+    "20:00": {
+     "title": "\"The Blair Witch Project\"  (1999) Heather Donahue, Michael Williams. Independent hit about student filmmakers who are terrorized in the forest.  | (1 hr 21 min)",
+     "movie": true
+    },
+    "21:30": {
+     "title": "\"Election\"  (1999) Matthew Brodderick, Reese Witherspoon. A teacher tries to thwart an overachiever in a high-school election.  | (1 hr 44 min)",
+     "movie": true
+    },
+    "23:30": {
+     "title": "\"The Mummy\"  (1999) Brendan Fraser, Rachel Weisz. A treasure-seeker unwittingly unleashes a 3000-year-old mummy.  | (2 hrs 5 min)",
+     "movie": true
+    },
+    "02:00": {
+     "title": "\"The Matrix\"  (1999) Keanu Reeves, Laurence Fishburne. Dazzling special effects frame a compelling story about a hacker on the run.  | (2 hrs 28 min)",
+     "movie": true
+    }
+   }
+  }
+ ]
+}
