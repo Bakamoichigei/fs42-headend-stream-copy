@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+  bakacast-setup.htm - set up an XTV125D for Bakacast without the remote.
+
+  Does what the boot setup menu (kumat/setup/setup.js) does, through the same
+  xsystem.* properties: Start Mode = Local, HD and SD output = 480i, no upgrade URL.
+  Then xsystem.sysConfigSave() and a reboot.
+
+  Install and run (Windows cmd, ssh config from docs/xtv125d.md):
+    ssh vbrick "cat > /root/data/bakacast-setup.htm" < tools\xtv125d\bakacast-setup.htm
+    ssh vbrick "gotourl 'file:///root/data/bakacast-setup.htm?dry=1'"   # show current values only
+    ssh vbrick "gotourl file:///root/data/bakacast-setup.htm"           # apply, save, reboot
+  The page draws on the box's own video output, so watch it on a TV.
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Bakacast setup</title>
+<style>
+  body { background: #000033; color: #ffffff; font-family: sans-serif; font-size: 22px; margin: 40px; }
+  h1 { font-size: 30px; color: #ffcc00; margin: 0 0 16px 0; }
+  table { border-collapse: collapse; }
+  td { padding: 3px 18px 3px 0; }
+  .k { color: #99ccff; }
+  .chg { color: #66ff66; }
+  #msg { margin-top: 18px; color: #ffcc00; }
+</style>
+<script type="text/javascript">
+// What a Bakacast decoder should look like. Same values the setup menu writes.
+var LOCAL_PORTAL = "file:///root/titanium/demo_page/kumat/vbrick/home.htm";
+var WANT = [
+  ["browserPortalPage",     LOCAL_PORTAL],   // Start Mode: Local
+  ["vidHdOutputFmt",        "480i"],         // HD output (factory 720p); both outputs NTSC-family
+  ["vidSdOutputFmt",        "480i"],         // SD output (composite)
+  ["sysFirmwareUpgradeURL", ""]              // no upgrade check at boot
+];
+// Shown but not changed (for the record).
+var SHOW = ["sysFirmwareVer", "vidDeinterlace", "vidHdAspectRatio", "sysTimeZone",
+            "sysTimeServIPAddr", "rmtAccessType", "sysWatchDogDisabled", "ip4AddrType", "ip4Addr"];
+
+function val(k) { try { var v = xsystem[k]; return (v === null || v === undefined) ? "(null)" : String(v); } catch (e) { return "(error)"; } }
+function row(t, k, a, b, changed) {
+  var tr = t.insertRow(-1);
+  tr.insertCell(-1).innerHTML = '<span class="k">' + k + '</span>';
+  tr.insertCell(-1).appendChild(document.createTextNode(a));
+  var c = tr.insertCell(-1);
+  c.appendChild(document.createTextNode(b));
+  if (changed) c.className = "chg";
+}
+function say(s) { document.getElementById("msg").appendChild(document.createTextNode(s + " ")); }
+
+function run() {
+  var dry = window.location.search.indexOf("dry=1") >= 0;
+  var t = document.getElementById("tbl");
+  if (typeof xsystem == "undefined") { say("xsystem API not available - nothing done."); return; }
+  var changes = 0, i;
+  for (i = 0; i < WANT.length; i++) {
+    var k = WANT[i][0], want = WANT[i][1], before = val(k);
+    var differs = before != want && !(want === "" && before == "(null)");
+    if (differs && !dry) {
+      try { xsystem[k] = want; } catch (e) { say("Could not set " + k + "."); }
+      changes++;
+    }
+    row(t, k, before, dry ? (differs ? "-> " + want : "ok") : val(k), differs);
+  }
+  for (i = 0; i < SHOW.length; i++) row(t, SHOW[i], val(SHOW[i]), "", false);
+
+  if (dry) { say("Dry run: nothing changed."); return; }
+  if (changes == 0) { say("Already set up. Nothing to save."); return; }
+  try { xsystem.sysConfigSave(); say("Saved. Rebooting in 10 s..."); }
+  catch (e) { say("sysConfigSave failed - NOT rebooting."); return; }
+  setTimeout("xsystem.sysReboot()", 10000);
+}
+</script>
+</head>
+<body onload="run()">
+<h1>BAKACAST decoder setup</h1>
+<table id="tbl"><tr><td class="k">setting</td><td>before</td><td>after</td></tr></table>
+<div id="msg"></div>
+</body>
+</html>

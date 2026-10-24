@@ -153,6 +153,11 @@ location). If `ftp` or `tftp` exists on the box, pulling the files whole is even
 
 ## What's inside (first box, 2026-10-01)
 
+**Box 1's provenance:** US government surplus. Under the front film is a property tag:
+"Org Name: FORT BELVOIR COMM", "Nomen: VIDEO IMAGE PROCES", SN AW0741251980. Keep the tag on. Its
+software is factory default (VBrick's sample `channels.xml` and the OEM's demo files), so it was most
+likely never deployed. It's earmarked as the **channel 42 (Prevue)** decoder.
+
 From an SSH session on the first box. **SSH works as well as telnet**, same login (`iptv` / `settopbox`),
 and that login **is root** (uid 0).
 
@@ -160,7 +165,7 @@ and that login **is root** (uid 0).
 |---|---|
 | SoC | **Broadcom BCM7405** (dual BMIPS4380 @ 400 MHz), 314 MB RAM. Decodes MPEG-2 and H.264 in hardware |
 | OS | Linux 2.6.18 (Broadcom STB kernel), BusyBox 1.11.1, built 2013-09-24 |
-| Firmware | `config.txt` version **v2.5.1-vbk** (the quick start covers v2.2.5) |
+| Firmware | **1255.1501.0022.8068**, bootloader 2.22.23, middleware 2.1.4, browser 3.1.8.24.04.20, built 2013-09-24 (`/etc/app-version`); `config.txt` version **v2.5.1-vbk** (the quick start covers v2.2.5) |
 | UI / player | **`stb_galio`**, ANT Galio browser-based middleware; OEM pages in `/root/titanium/demo_page/kumat/` |
 | Services | `dropbear` (SSH, 22), `utelnetd` (23), a web service on **port 80**, `ntpclient` → pool.ntp.org, DHCP |
 | Storage | `/` and `/root/titanium` are read-only cramfs; **`/root/data` is writable flash (jffs2, ~2.3 MB free)** and holds every setting |
@@ -203,9 +208,129 @@ Everything below the file's **CUT LINE** must not be edited.
   off the home network), change the password (`passwd`; the file lives in `/root/data`), and turn off
   telnet and the remote-management features once the boxes are set up.
 
+### From the `/root/data` backup (2026-10-23)
+
+**Back up a box (Windows cmd; PowerShell's `>` corrupts binary):**
+`ssh vbrick "tar cf - /root/data" > %USERPROFILE%\Desktop\xtv125d-data.tar`.
+The 2013 dropbear needs old algorithms, so `%USERPROFILE%\.ssh\config` has:
+
+```
+Host vbrick 10.0.0.52
+    HostName 10.0.0.52
+    User iptv
+    KexAlgorithms +diffie-hellman-group14-sha1
+    HostKeyAlgorithms +ssh-rsa
+    MACs +hmac-sha1
+```
+
+The first box's factory `/root/data` is kept as the baseline for all 14.
+
+- **A virtual remote over SSH: `gotourl <code>`** presses a remote key (needs
+  `stb.remotemgmt.irsim.enable: 1`, which is on). Codes are NEC, address `0x708f`, then the key byte and
+  its complement: digits `0x708f00ff` … `0x708f09f6` (key byte 0x00–0x09), **OK/Enter `0x708f16e9`**,
+  Vol+ `0x708f0ff0`, Vol− `0x708f0ef1`. VBrick's `setChannel` and `setVolume` scripts are just sequences
+  of these. Other keys (Help, arrows, Menu) are still to map.
+- **`env.cfg` is the setup menu's store**: binary records of `[id u32 LE][length u32 LE][value]`.
+  Decoded: NTP server `pool.ntp.org` (id 251), time zone **`+8`** (252, i.e. Taiwan/China factory
+  default), **password `1234`** (202), a **second password `5678`** (203; probably an engineering
+  menu), an IP field `0.0.0.0` (351), and small integers at ids 101, 151, 107, 157, 301, 311 (=22),
+  312 (=23), 352, 353 whose meaning is unknown.
+  **To decode the rest:** change one thing in the remote's setup menu, back up again, compare.
+  Once the start-mode and output fields are known, the other boxes can be set up by copying
+  `env.cfg` + `config.txt` + `channels.xml` over SSH, without the remote. Use DHCP reservations, not static IPs, so copied files can't collide.
+- **`rc.d/rc80.user`** starts the UI at boot (`cd /root/titanium; settop install; galio initrc &`).
+  It's a hook for our own boot-time lines later; a mistake there can leave the box without its player
+  (SSH still comes up), so test it on one box only.
+- **`himi.xml`**: an OEM demo channel list showing **per-stream decoder options**:
+  `<Decode prm="deInterlace">`, `"rtp"`, `"check_av"`, `"decode_mode"`, `"tsm_mode"` (Broadcom
+  timestamp management, i.e. how it locks to PCR), `"drm"` and `"src"` (source-specific multicast).
+  Whether `channels.xml` honours `<Decode>` is untested. Keep it in mind if lip-sync or splices misbehave.
+- **`passwd`**: both `root` and `iptv` are uid 0 with password logins. Change both.
+- **Volume is at 100** (`cookies.txt`: `tvVolValue 100`). Leave it there and set audio levels at the modulator.
+- `stb.db` is an empty SQLite download-manager table; `mcast_source_list.conf` is empty.
+
+### Full flash backup (box 1, verified 2026-10-24)
+
+Dump each partition from **cmd** (PowerShell's `>` corrupts binary), using the raw `/dev/mtdN` devices:
+`mtdblock` rounds reads down to 512-byte blocks and truncated `config`, `nvram` and `cert`, and gave a
+bad `appfs`.
+
+```
+for /L %i in (0,1,10) do ssh vbrick "cat /dev/mtd%i" > %USERPROFILE%\Desktop\xtv125d-mtd%i.bin
+ssh vbrick "for i in 0 1 2 3 4 5 6 7 8 9 10; do md5sum /dev/mtd$i; done"
+```
+
+Check on the PC (PowerShell is fine for hashing):
+`Get-ChildItem $HOME\Desktop\xtv125d-mtd*.bin | Get-FileHash -Algorithm MD5`.
+
+| mtd | Name | Size | MD5 (box 1) | Same on every box? |
+|---|---|---:|---|---|
+| 0 | rootfs | 6,815,744 | `5354027012285e9a8a98bc668e265388` | expected |
+| 1 | cfe (bootloader) | 1,048,576 | `22927d7e9a9a726b57ab0b062939296d` | expected |
+| 2 | vmlinux | 2,359,296 | `80df22043fa5b2c6a0655be8ce6d8be7` | expected |
+| 3 | config | 144 | `4d72adef251757c5685a1d2cf18572bf` | **no** (per-box; likely MAC) |
+| 4 | nvram | 1,904 | `14af06e6c560a6712701accf773077d7` | **no** (per-box) |
+| 5 | appfs | 18,989,056 | `dd8ca6b8abafc28f6635c7c544e63555` | expected |
+| 6 | data (`/root/data`) | 3,014,656 | `249fb6ff37b4f778616d4931d930865f` | no (settings; changes in use) |
+| 7 | image | 28,966,912 | `a4b71ddcba79bad5815cbe7eeddb80af` | expected |
+| 8 | cert | 129,008 | `6e718efcc86a9ea987dc1ef5c0bdf45e` | **no** (probably per-box) |
+| 9 | osd | 262,144 | `74db6f6aae8485ef79bbb30a56b19482` | expected |
+| 10 | upgrade | 131,072 | `8039174560de61bc2874996a22725e04` | probably |
+
+Box 1's dumps plus `xtv125d-data.tar` (factory `/root/data`) and `xtv125d-ui.tar` are the reference set;
+keep them on the NAS. Hashing the "expected" rows on each new box confirms whether it runs identical firmware.
+**Never write `config`, `nvram` or `cert` from one box to another.**
+
+### What the UI pages show (`/root/titanium/demo_page`, 2026-10-24)
+
+The whole UI is HTML + JavaScript on the Galio browser, talking to the box through an `xsystem` object.
+
+- **Local mode is `kumat/vbrick/home.htm` + `main.js`.** It reads `/root/data/channels.xml` and
+  `adjust.xml`. `FullScreen` and `AutoChannelNumbers` must be exactly `1` to count. **`DfltStrm`: any
+  non-empty value** marks the default stream; with one stream it defaults to index 0 anyway.
+- **`gotourl <URL>` points the browser at any page** (VBrick's own comment:
+  `gotourl file:///root/titanium/demo_page/kumat/vbrick/home.htm?CXML=channelSpecial.xml` loads a
+  different channels file). With a hex argument it's a remote key instead.
+- **Stream loss and recovery (multicast `tvPlayer`):** any player error (2 Connect Failed, 3 Lost
+  Signal, 5 End of Stream…) makes it disconnect; a check every **10 s** replays the channel if the
+  player is in error. So after a headend restart, expect up to ~10 s before the picture returns.
+  This is also why the headend keeps the mux alive with PSI/PCR/null packets during gaps: an
+  unbroken stream never trips "Lost Signal".
+- **Setup menu = `kumat/setup/setup.js`**, writing `xsystem` properties and then
+  `xsystem.sysConfigSave(); xsystem.sysReboot()`. The relevant ones:
+  - Start Mode Local ⇔ `browserPortalPage = "file:///root/titanium/demo_page/kumat/vbrick/home.htm"`
+    (that's also `config.txt`'s `browser.document.default`, so this box may already be Local).
+  - Output: `vidHdOutputFmt` / `vidSdOutputFmt`, values like `720p`, `480i`, `576i`.
+  - `sysFirmwareUpgradeURL`, `sysTimeServIPAddr`, `sysTimeZone`, `ip4AddrType`/`ip4Addr`…,
+    `ip4IGMPVer`, `sysWatchDogDisabled`/`Timeout`.
+  - **`rmtAccessType`**: bit 0x01 = SSH, bit 0x02 = telnet. Turning telnet off is `&= 0xfd`.
+  - `browserConfigPassword` (`1234`) and **`browserAdvancedConfigPassword`** (`5678` in `env.cfg`):
+    the setup menu accepts either; the advanced one unlocks more pages. The 2011 changelog also mentions
+    "a unique super password for each STB".
+- **Remote key codes** (`kumat/lib/keycode.txt`; these are browser key codes, not the NEC IR codes
+  `gotourl` takes): the NEC-en remote has **HELP = 156**, **Setup = 0x40000026**, OK = 13, arrows 37–40,
+  Home = 771, Previous = 769, Next = 768, Display = 0x40000206, A/R = 0x40000207.
+- `version history.txt` is the EPG/UI changelog (to V6.2, 2011); `epg.ver` says UI 2.1.4.
+
+## Setup without the remote: `tools/xtv125d/bakacast-setup.htm` (untested)
+
+A page that does what the setup menu does, through the same `xsystem` properties: Start Mode Local,
+HD and SD output 480i, no upgrade URL, then save and reboot. It draws a before/after table on the
+box's video output. From Windows cmd, in the repo folder:
+
+```
+ssh vbrick "cat > /root/data/bakacast-setup.htm" < tools\xtv125d\bakacast-setup.htm
+ssh vbrick "gotourl 'file:///root/data/bakacast-setup.htm?dry=1'"
+ssh vbrick "gotourl file:///root/data/bakacast-setup.htm"
+```
+
+The first `gotourl` (`?dry=1`) only shows the current values. Run the second one only if those look
+right; it saves and reboots after 10 s. Back up `/root/data` before and after: comparing the two
+`env.cfg` files maps the record ids to settings. If this works, boxes 2–14 need no remote at all.
+
 ### Still to look at
 
-- `setChannel`, `setVolume`, `rc.d/rc80.user`, `env.cfg`, `adjust.xml`, `himi.xml`, `/etc/app-version`.
 - The web UI at `http://<box>/`.
-- Whether `ezController` (unicast port 9095) or IR simulation can drive the setup menu, so the other
-  13 boxes don't need the remote.
+- `kumat/diagnostic` and `kumat/status`: whether they can report what the box is playing, for a
+  headend health check.
+- Whether `channels.xml` accepts the `<Decode prm="…">` options from `himi.xml`.
